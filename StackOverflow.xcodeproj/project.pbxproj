@@ -22,6 +22,16 @@
 		96D7BBFD18AC8E8A0085D5E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96D7BBDC18AC8E890085D5E0 /* UIKit.framework */; };
 		96D7BC0518AC8E8A0085D5E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96D7BC0318AC8E8A0085D5E0 /* InfoPlist.strings */; };
 		96D7BC0718AC8E8A0085D5E0 /* StackOverflowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D7BC0618AC8E8A0085D5E0 /* StackOverflowTests.m */; };
+		96D7BC1618AC8FA20085D5E0 /* JBSearchQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D7BC1518AC8FA20085D5E0 /* JBSearchQuestionsViewController.m */; };
+		96D7BC1918AC901E0085D5E0 /* JBStackOverflowAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D7BC1818AC901E0085D5E0 /* JBStackOverflowAPIManager.m */; };
+		96D7BC1A18AC901E0085D5E0 /* JBStackOverflowAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D7BC1818AC901E0085D5E0 /* JBStackOverflowAPIManager.m */; };
+		96D7BC1B18AC90220085D5E0 /* JBSearchQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D7BC1518AC8FA20085D5E0 /* JBSearchQuestionsViewController.m */; };
+		96D7BC2018AC90770085D5E0 /* JBQuestionSummaryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D7BC1F18AC90770085D5E0 /* JBQuestionSummaryCollectionViewCell.m */; };
+		96D7BC2118AC90770085D5E0 /* JBQuestionSummaryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D7BC1F18AC90770085D5E0 /* JBQuestionSummaryCollectionViewCell.m */; };
+		96D7BC2418AC91260085D5E0 /* JBStackOverflowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D7BC2318AC91260085D5E0 /* JBStackOverflowModel.m */; };
+		96D7BC2518AC91260085D5E0 /* JBStackOverflowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D7BC2318AC91260085D5E0 /* JBStackOverflowModel.m */; };
+		96D7BC2818AC917C0085D5E0 /* JBStackOverflowQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D7BC2718AC917C0085D5E0 /* JBStackOverflowQuestion.m */; };
+		96D7BC2918AC917C0085D5E0 /* JBStackOverflowQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D7BC2718AC917C0085D5E0 /* JBStackOverflowQuestion.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +65,16 @@
 		96D7BC0218AC8E8A0085D5E0 /* StackOverflowTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StackOverflowTests-Info.plist"; sourceTree = "<group>"; };
 		96D7BC0418AC8E8A0085D5E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		96D7BC0618AC8E8A0085D5E0 /* StackOverflowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StackOverflowTests.m; sourceTree = "<group>"; };
+		96D7BC1418AC8FA20085D5E0 /* JBSearchQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBSearchQuestionsViewController.h; path = Classes/JBSearchQuestionsViewController.h; sourceTree = "<group>"; };
+		96D7BC1518AC8FA20085D5E0 /* JBSearchQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBSearchQuestionsViewController.m; path = Classes/JBSearchQuestionsViewController.m; sourceTree = "<group>"; };
+		96D7BC1718AC901E0085D5E0 /* JBStackOverflowAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBStackOverflowAPIManager.h; path = Classes/JBStackOverflowAPIManager.h; sourceTree = "<group>"; };
+		96D7BC1818AC901E0085D5E0 /* JBStackOverflowAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBStackOverflowAPIManager.m; path = Classes/JBStackOverflowAPIManager.m; sourceTree = "<group>"; };
+		96D7BC1E18AC90770085D5E0 /* JBQuestionSummaryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBQuestionSummaryCollectionViewCell.h; path = Classes/JBQuestionSummaryCollectionViewCell.h; sourceTree = "<group>"; };
+		96D7BC1F18AC90770085D5E0 /* JBQuestionSummaryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBQuestionSummaryCollectionViewCell.m; path = Classes/JBQuestionSummaryCollectionViewCell.m; sourceTree = "<group>"; };
+		96D7BC2218AC91260085D5E0 /* JBStackOverflowModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBStackOverflowModel.h; path = Classes/JBStackOverflowModel.h; sourceTree = "<group>"; };
+		96D7BC2318AC91260085D5E0 /* JBStackOverflowModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBStackOverflowModel.m; path = Classes/JBStackOverflowModel.m; sourceTree = "<group>"; };
+		96D7BC2618AC917C0085D5E0 /* JBStackOverflowQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBStackOverflowQuestion.h; path = Classes/JBStackOverflowQuestion.h; sourceTree = "<group>"; };
+		96D7BC2718AC917C0085D5E0 /* JBStackOverflowQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBStackOverflowQuestion.m; path = Classes/JBStackOverflowQuestion.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,13 +134,13 @@
 		96D7BBDE18AC8E890085D5E0 /* StackOverflow */ = {
 			isa = PBXGroup;
 			children = (
+				96D7BC1118AC8EE90085D5E0 /* Models */,
+				96D7BC1018AC8EE40085D5E0 /* Networking */,
+				96D7BC1218AC8EF10085D5E0 /* View Controllers */,
 				96D7BBE718AC8E890085D5E0 /* JBAppDelegate.h */,
 				96D7BBE818AC8E890085D5E0 /* JBAppDelegate.m */,
-				96D7BBEA18AC8E890085D5E0 /* Main_iPhone.storyboard */,
-				96D7BBED18AC8E890085D5E0 /* Main_iPad.storyboard */,
 				96D7BBF018AC8E890085D5E0 /* JBViewController.h */,
 				96D7BBF118AC8E890085D5E0 /* JBViewController.m */,
-				96D7BBF318AC8E890085D5E0 /* Images.xcassets */,
 				96D7BBDF18AC8E890085D5E0 /* Supporting Files */,
 			);
 			path = StackOverflow;
@@ -129,6 +149,8 @@
 		96D7BBDF18AC8E890085D5E0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				96D7BC1318AC8F170085D5E0 /* Storyboards */,
+				96D7BBF318AC8E890085D5E0 /* Images.xcassets */,
 				96D7BBE018AC8E890085D5E0 /* StackOverflow-Info.plist */,
 				96D7BBE118AC8E890085D5E0 /* InfoPlist.strings */,
 				96D7BBE418AC8E890085D5E0 /* main.m */,
@@ -153,6 +175,62 @@
 				96D7BC0318AC8E8A0085D5E0 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		96D7BC1018AC8EE40085D5E0 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				96D7BC1718AC901E0085D5E0 /* JBStackOverflowAPIManager.h */,
+				96D7BC1818AC901E0085D5E0 /* JBStackOverflowAPIManager.m */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		96D7BC1118AC8EE90085D5E0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				96D7BC2218AC91260085D5E0 /* JBStackOverflowModel.h */,
+				96D7BC2318AC91260085D5E0 /* JBStackOverflowModel.m */,
+				96D7BC2618AC917C0085D5E0 /* JBStackOverflowQuestion.h */,
+				96D7BC2718AC917C0085D5E0 /* JBStackOverflowQuestion.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		96D7BC1218AC8EF10085D5E0 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				96D7BC1C18AC902F0085D5E0 /* Search Questions */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		96D7BC1318AC8F170085D5E0 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				96D7BBED18AC8E890085D5E0 /* Main_iPad.storyboard */,
+				96D7BBEA18AC8E890085D5E0 /* Main_iPhone.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		96D7BC1C18AC902F0085D5E0 /* Search Questions */ = {
+			isa = PBXGroup;
+			children = (
+				96D7BC1D18AC90420085D5E0 /* Views */,
+				96D7BC1418AC8FA20085D5E0 /* JBSearchQuestionsViewController.h */,
+				96D7BC1518AC8FA20085D5E0 /* JBSearchQuestionsViewController.m */,
+			);
+			name = "Search Questions";
+			sourceTree = "<group>";
+		};
+		96D7BC1D18AC90420085D5E0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				96D7BC1E18AC90770085D5E0 /* JBQuestionSummaryCollectionViewCell.h */,
+				96D7BC1F18AC90770085D5E0 /* JBQuestionSummaryCollectionViewCell.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,9 +332,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96D7BC1918AC901E0085D5E0 /* JBStackOverflowAPIManager.m in Sources */,
+				96D7BC1618AC8FA20085D5E0 /* JBSearchQuestionsViewController.m in Sources */,
+				96D7BC2818AC917C0085D5E0 /* JBStackOverflowQuestion.m in Sources */,
 				96D7BBE918AC8E890085D5E0 /* JBAppDelegate.m in Sources */,
 				96D7BBF218AC8E890085D5E0 /* JBViewController.m in Sources */,
+				96D7BC2418AC91260085D5E0 /* JBStackOverflowModel.m in Sources */,
 				96D7BBE518AC8E890085D5E0 /* main.m in Sources */,
+				96D7BC2018AC90770085D5E0 /* JBQuestionSummaryCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +348,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				96D7BC0718AC8E8A0085D5E0 /* StackOverflowTests.m in Sources */,
+				96D7BC2118AC90770085D5E0 /* JBQuestionSummaryCollectionViewCell.m in Sources */,
+				96D7BC1B18AC90220085D5E0 /* JBSearchQuestionsViewController.m in Sources */,
+				96D7BC2518AC91260085D5E0 /* JBStackOverflowModel.m in Sources */,
+				96D7BC2918AC917C0085D5E0 /* JBStackOverflowQuestion.m in Sources */,
+				96D7BC1A18AC901E0085D5E0 /* JBStackOverflowAPIManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +563,7 @@
 				96D7BC0C18AC8E8A0085D5E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		96D7BC0D18AC8E8A0085D5E0 /* Build configuration list for PBXNativeTarget "StackOverflowTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +572,7 @@
 				96D7BC0F18AC8E8A0085D5E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
