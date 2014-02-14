@@ -17,7 +17,7 @@ NSString * const kStackExchangeDefaultHost = @"http://api.stackexchange.com/";
 // Sites API
 NSString * const kStackExchangeSitesPath = @"sites";
 // Questions
-NSString * const kStackExchangeQuestionsPath = @"questions";
+NSString * const kStackExchangeSearchQuestionsPath = @"search";
 
 /* Most StackExchange responses return an array of "items", which represent whatever you were requesting.
  * The parse items block wil be called on each JSON dictionary contained in the items field.
@@ -44,7 +44,7 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
                                        success:(JBStackExchangeSuccessBlock)success
                                        failure:(JBStackExchangeFailureBlock)failure;
 {
-    NSURL *questionsURL = [self urlFromPath: kStackExchangeQuestionsPath
+    NSURL *questionsURL = [self urlFromPath: kStackExchangeSearchQuestionsPath
                                     options: options];
     
     JBStackExchangeResponseParseItemsBlock parseBlock = ^(NSDictionary *responseJSON)
