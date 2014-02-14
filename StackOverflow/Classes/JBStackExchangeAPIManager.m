@@ -44,8 +44,8 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
                                        success:(JBStackExchangeSuccessBlock)success
                                        failure:(JBStackExchangeFailureBlock)failure;
 {
-    NSURL *sitesURL = [self urlFromPath: kStackExchangeQuestionsPath
-                                options: options];
+    NSURL *questionsURL = [self urlFromPath: kStackExchangeQuestionsPath
+                                    options: options];
     
     JBStackExchangeResponseParseItemsBlock parseBlock = ^(NSDictionary *responseJSON)
     {
@@ -53,10 +53,10 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
         return responseItem;
     };
     
-    [[self jsonTaskWithURL: sitesURL
-                parseBlock: parseBlock
-                   success: success
-                   failure: failure] resume];
+    [self startJSONTaskWithURL: questionsURL
+                    parseBlock: parseBlock
+                       success: success
+                       failure: failure];
 }
 
 #pragma mark - Sites
@@ -74,10 +74,10 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
         return responseItem;
     };
     
-    [[self jsonTaskWithURL: sitesURL
-                parseBlock: parseBlock
-                   success: success
-                   failure: failure] resume];
+    [self startJSONTaskWithURL: sitesURL
+                    parseBlock: parseBlock
+                       success: success
+                       failure: failure];
 }
 
 #pragma mark - Images
@@ -126,55 +126,57 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
     return request;
 }
 
-- (NSURLSessionDataTask *)jsonTaskWithURL:(NSURL *)url
-                               parseBlock:(JBStackExchangeResponseParseItemsBlock)parseItemBlock
-                                  success:(JBStackExchangeSuccessBlock)successBlock
-                                  failure:(JBStackExchangeFailureBlock)failureBlock
+- (void)startJSONTaskWithURL:(NSURL *)url
+                  parseBlock:(JBStackExchangeResponseParseItemsBlock)parseItemBlock
+                     success:(JBStackExchangeSuccessBlock)successBlock
+                     failure:(JBStackExchangeFailureBlock)failureBlock
 {
     NSURLRequest *urlRequest = [self defaultURLRequestWithURL: url];
-    return [self jsonTaskWithRequest: urlRequest
-                          parseBlock: parseItemBlock
-                             success: successBlock
-                             failure: failureBlock];
+    [self startJSONTaskWithRequest: urlRequest
+                        parseBlock: parseItemBlock
+                           success: successBlock
+                           failure: failureBlock];
 }
 
-- (NSURLSessionDataTask *)jsonTaskWithRequest:(NSURLRequest *)request
-                                   parseBlock:(JBStackExchangeResponseParseItemsBlock)parseItemBlock
-                                      success:(JBStackExchangeSuccessBlock)successBlock
-                                      failure:(JBStackExchangeFailureBlock)failureBlock
+- (void)startJSONTaskWithRequest:(NSURLRequest *)request
+                      parseBlock:(JBStackExchangeResponseParseItemsBlock)parseItemBlock
+                         success:(JBStackExchangeSuccessBlock)successBlock
+                         failure:(JBStackExchangeFailureBlock)failureBlock
 {
-    return [self.session dataTaskWithRequest: request
-                           completionHandler: ^(NSData *data, NSURLResponse *response, NSError *error)
-            {
-                if ([response isKindOfClass: [NSHTTPURLResponse class]])
-                {
-                    //NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-                    //NSDictionary *headers = [httpResponse allHeaderFields];
-                    
-                    if (TRUE) // header validation)
-                    {
-                        NSError *jsonParseError = nil;
-                        NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData: data
-                                                                                     options: 0
-                                                                                       error: &jsonParseError];
-                        if (jsonParseError)
-                        {
-                            // handle error
-                        }
-                        else
-                        {
-                            if (successBlock)
-                            {
-                                JBStackExchangeResponse *response = [self responseFromJSONResponse: jsonResponse
-                                                                                    parseItemBlock: parseItemBlock];
-                                dispatch_async(dispatch_get_main_queue(), ^{
-                                    successBlock(response);
-                                });
-                            }
-                        }
-                    }
-                }
-            }];
+    NSLog(@"Executing request: %@", request);
+    [[self.session dataTaskWithRequest: request
+                     completionHandler: ^(NSData *data, NSURLResponse *response, NSError *error)
+      {
+          NSLog(@"Received response: %@", response);
+          if ([response isKindOfClass: [NSHTTPURLResponse class]])
+          {
+              //NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+              //NSDictionary *headers = [httpResponse allHeaderFields];
+              
+              if (TRUE) // header validation)
+              {
+                  NSError *jsonParseError = nil;
+                  NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData: data
+                                                                               options: 0
+                                                                                 error: &jsonParseError];
+                  if (jsonParseError)
+                  {
+                      // handle error
+                  }
+                  else
+                  {
+                      if (successBlock)
+                      {
+                          JBStackExchangeResponse *response = [self responseFromJSONResponse: jsonResponse
+                                                                              parseItemBlock: parseItemBlock];
+                          dispatch_async(dispatch_get_main_queue(), ^{
+                              successBlock(response);
+                          });
+                      }
+                  }
+              }
+          }
+      }] resume];
 }
 
 #pragma mark - Parsing
