@@ -10,7 +10,7 @@
 #import "JBStackExchangeQuestionSummaryCollectionViewCell.h"
 #import "JBStackExchangeQuestion.h"
 
-@interface JBStackExchangeSearchQuestionsViewController ()
+@interface JBStackExchangeSearchQuestionsViewController () <UISearchBarDelegate>
 
 @property (nonatomic, strong) NSArray *stackExchangeQuestions;
 
@@ -21,13 +21,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
-    
-    [self loadStackExchangeQuestions];
 }
 
 - (void)loadStackExchangeQuestions
 {
-    self.apiOptions.inTitleQuery = @"Objective-c";
     [[JBStackExchangeAPIManager shared] fetchStackExchangeQuestionsWithOptions: self.apiOptions
                                                                        success:^(JBStackExchangeResponse *responseObject)
      {
@@ -63,6 +60,29 @@
     
     return cell;
 }
+
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+          viewForSupplementaryElementOfKind:(NSString *)kind
+                                atIndexPath:(NSIndexPath *)indexPath
+{
+    if ([kind isEqual:UICollectionElementKindSectionHeader])
+    {
+        return [self.collectionView dequeueReusableSupplementaryViewOfKind: kind
+                                                       withReuseIdentifier: @"JBStackExchangeQuestionSummaryCollectionViewHeader"
+                                                              forIndexPath: indexPath];
+    }
+    
+    return nil;
+}
+
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    self.apiOptions.inTitleQuery = searchBar.text;
+    [self loadStackExchangeQuestions];
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

@@ -80,13 +80,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QiE-0z-xeq">
                             <size key="itemSize" width="277" height="92"/>
-                            <size key="headerReferenceSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="320" height="44"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="JBStackExchangeQuestionSummaryCollectionViewCell" id="Swz-Bc-apf" customClass="JBStackExchangeQuestionSummaryCollectionViewCell">
-                                <rect key="frame" x="22" y="114" width="277" height="92"/>
+                                <rect key="frame" x="22" y="108" width="277" height="92"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="277" height="92"/>
@@ -113,12 +113,12 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nN9-bs-qs3">
-                            <rect key="frame" x="0.0" y="64" width="320" height="50"/>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="JBStackExchangeQuestionSummaryCollectionViewHeader" id="nN9-bs-qs3">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vhu-wC-4Pw">
-                                    <rect key="frame" x="0.0" y="3" width="320" height="44"/>
+                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="vhu-wC-4Pw">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
@@ -126,6 +126,12 @@
                                     </connections>
                                 </searchBar>
                             </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="vhu-wC-4Pw" secondAttribute="bottom" id="GgC-hQ-mKm"/>
+                                <constraint firstItem="vhu-wC-4Pw" firstAttribute="leading" secondItem="nN9-bs-qs3" secondAttribute="leading" id="WNY-7p-uoc"/>
+                                <constraint firstAttribute="trailing" secondItem="vhu-wC-4Pw" secondAttribute="trailing" id="pDn-eI-FqU"/>
+                                <constraint firstItem="vhu-wC-4Pw" firstAttribute="top" secondItem="nN9-bs-qs3" secondAttribute="top" id="yR8-rX-y7p"/>
+                            </constraints>
                         </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="5mD-eA-BI3" id="Yet-Jl-EFJ"/>
@@ -141,7 +147,6 @@
                 <searchDisplayController id="Vkf-cv-qbG">
                     <connections>
                         <outlet property="delegate" destination="5mD-eA-BI3" id="hwj-6K-MSs"/>
-                        <outlet property="searchBar" destination="vhu-wC-4Pw" id="d2x-Fj-DCe"/>
                         <outlet property="searchContentsController" destination="5mD-eA-BI3" id="rGr-DS-paB"/>
                         <outlet property="searchResultsDataSource" destination="5mD-eA-BI3" id="9jx-hf-R3u"/>
                         <outlet property="searchResultsDelegate" destination="5mD-eA-BI3" id="puY-14-lhe"/>
