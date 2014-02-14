@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Josh Buchacher. All rights reserved.
 //
 
-#import "JBQuestionSummaryCollectionViewCell.h"
+#import "JBStackExchangeQuestionSummaryCollectionViewCell.h"
 
-@implementation JBQuestionSummaryCollectionViewCell
+@implementation JBStackExchangeQuestionSummaryCollectionViewCell
 
 - (id)initWithFrame:(CGRect)frame
 {

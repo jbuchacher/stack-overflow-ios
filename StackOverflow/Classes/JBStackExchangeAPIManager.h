@@ -16,9 +16,12 @@ typedef void (^JBStackExchangeFailureBlock)(NSError *error);
 
 @interface JBStackExchangeAPIManager : NSObject
 
-@property (nonatomic, strong, readonly) JBStackExchangeAPIOptions *apiOptions;
+- (void)fetchStackExchangeQuestionsWithOptions:(JBStackExchangeAPIOptions *)options
+                                       success:(JBStackExchangeSuccessBlock)success
+                                       failure:(JBStackExchangeFailureBlock)failure;
 
-- (void)fetchStackExchangeSitesWithSuccess:(JBStackExchangeSuccessBlock)success
+- (void)fetchStackExchangeSitesWithOptions:(JBStackExchangeAPIOptions *)options
+                                   success:(JBStackExchangeSuccessBlock)success
                                    failure:(JBStackExchangeFailureBlock)failure;
 
 - (void)fetchImageWithURLString:(NSString *)urlString

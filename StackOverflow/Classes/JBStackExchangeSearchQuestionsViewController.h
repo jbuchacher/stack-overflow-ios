@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "JBStackExchangeAPIOptions.h"
 
-@interface JBStackExchangeSearchQuestionsViewController : UIViewController
+@interface JBStackExchangeSearchQuestionsViewController : UICollectionViewController
+
+@property (nonatomic, weak) JBStackExchangeAPIOptions *apiOptions;
 
 @end

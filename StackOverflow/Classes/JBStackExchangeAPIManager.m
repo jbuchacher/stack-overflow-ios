@@ -10,11 +10,14 @@
 
 // Models
 #import "JBStackExchangeSiteItem.h"
+#import "JBStackExchangeQuestion.h"
 
 // API Host
 NSString * const kStackExchangeDefaultHost = @"http://api.stackexchange.com/";
 // Sites API
 NSString * const kStackExchangeSitesPath = @"sites";
+// Questions
+NSString * const kStackExchangeQuestionsPath = @"questions";
 
 /* Most StackExchange responses return an array of "items", which represent whatever you were requesting.
  * The parse items block wil be called on each JSON dictionary contained in the items field.
@@ -33,15 +36,37 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
 
 @end
 
-
 @implementation JBStackExchangeAPIManager
+
+#pragma mark - Search Questions
+
+- (void)fetchStackExchangeQuestionsWithOptions:(JBStackExchangeAPIOptions *)options
+                                       success:(JBStackExchangeSuccessBlock)success
+                                       failure:(JBStackExchangeFailureBlock)failure;
+{
+    NSURL *sitesURL = [self urlFromPath: kStackExchangeQuestionsPath
+                                options: options];
+    
+    JBStackExchangeResponseParseItemsBlock parseBlock = ^(NSDictionary *responseJSON)
+    {
+        JBStackExchangeQuestion *responseItem = [[JBStackExchangeQuestion alloc] initWithDictionary: responseJSON];
+        return responseItem;
+    };
+    
+    [[self jsonTaskWithURL: sitesURL
+                parseBlock: parseBlock
+                   success: success
+                   failure: failure] resume];
+}
 
 #pragma mark - Sites
 
-- (void)fetchStackExchangeSitesWithSuccess:(JBStackExchangeSuccessBlock)success
+- (void)fetchStackExchangeSitesWithOptions:(JBStackExchangeAPIOptions *)options
+                                   success:(JBStackExchangeSuccessBlock)success
                                    failure:(JBStackExchangeFailureBlock)failure
 {
-    NSURL *sitesURL = [NSURL URLWithString: [kStackExchangeDefaultHost stringByAppendingPathComponent: kStackExchangeSitesPath]];
+    NSURL *sitesURL = [self urlFromPath: kStackExchangeSitesPath
+                                options: options];
     
     JBStackExchangeResponseParseItemsBlock parseBlock = ^(NSDictionary *responseJSON)
     {
@@ -182,6 +207,50 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
     response.items = responseItems;
     
     return response;
+}
+
+#pragma mark - URL's & Query Strings
+
+- (NSURL *)urlFromPath:(NSString *)path
+               options:(JBStackExchangeAPIOptions *)apiOptions
+{
+    NSString *baseAndPathString = [kStackExchangeDefaultHost stringByAppendingPathComponent: path];
+    NSMutableString *urlString = [[NSMutableString alloc] initWithString: baseAndPathString];
+    
+    if (apiOptions && apiOptions.queryParameters.count)
+    {
+        [urlString appendString: [self queryStringFromOptions: apiOptions]];
+    }
+    
+    return [NSURL URLWithString: urlString];
+}
+
+- (NSString *)queryStringFromOptions:(JBStackExchangeAPIOptions *)apiOptions
+{
+    NSString *queryString = @"";
+    NSDictionary *queryParameters = apiOptions.queryParameters;
+    
+    if (queryParameters.count)
+    {
+        NSMutableString *queryParameterString = [[NSMutableString alloc] initWithString: @"?"];
+        
+        for (NSString *key in queryParameters.allKeys)
+        {
+            [queryParameterString appendFormat: @"%@=%@&", key, queryParameters[key]];
+        }
+        
+        if ([queryParameterString hasSuffix: @"&"])
+        {
+            queryString = [queryParameterString stringByReplacingCharactersInRange: NSMakeRange(queryParameterString.length - 1, 1)
+                                                                                 withString: @""];
+        }
+        else
+        {
+            queryString = queryParameterString;
+        }
+    }
+    
+    return queryString;
 }
 
 #pragma mark - Initialization

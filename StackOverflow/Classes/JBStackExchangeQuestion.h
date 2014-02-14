@@ -8,6 +8,8 @@
 
 #import "JBStackExchangeResponseItem.h"
 
-@interface JBStackOverflowQuestion : JBStackExchangeResponseItem
+@interface JBStackExchangeQuestion : JBStackExchangeResponseItem
+
+@property (nonatomic, strong, readonly) NSString *questionTitle;
 
 @end

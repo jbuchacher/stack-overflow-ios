@@ -73,38 +73,82 @@
             </objects>
             <point key="canvasLocation" x="223" y="-26"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Stack Exchange Search Questions View Controller-->
         <scene sceneID="5x3-RC-KNj">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="amh-Kf-Gys" sceneMemberID="viewController">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="amh-Kf-Gys" customClass="JBStackExchangeSearchQuestionsViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="kth-BB-Q9a">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xwW-lE-jBq">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="itemSize" width="726" height="148"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jkO-0w-oDX">
-                                <rect key="frame" x="0.0" y="64" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="JBStackExchangeQuestionSummaryCollectionViewCell" id="jkO-0w-oDX" customClass="JBStackExchangeQuestionSummaryCollectionViewCell">
+                                <rect key="frame" x="21" y="114" width="726" height="148"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="726" height="148"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="686" translatesAutoresizingMaskIntoConstraints="NO" id="jvL-h8-qMk">
+                                            <rect key="frame" x="20" y="20" width="686" height="108"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="jvL-h8-qMk" firstAttribute="leading" secondItem="jkO-0w-oDX" secondAttribute="leading" constant="20" id="8RN-o9-XrA"/>
+                                    <constraint firstAttribute="bottom" secondItem="jvL-h8-qMk" secondAttribute="bottom" constant="20" id="FJL-v9-Wlg"/>
+                                    <constraint firstItem="jvL-h8-qMk" firstAttribute="top" secondItem="jkO-0w-oDX" secondAttribute="top" constant="20" id="imJ-DK-7V3"/>
+                                    <constraint firstAttribute="trailing" secondItem="jvL-h8-qMk" secondAttribute="trailing" constant="20" id="n6O-E5-Wz8"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="questionTitleLabel" destination="jvL-h8-qMk" id="vfl-U2-ni0"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="pWO-Dn-Oac">
+                            <rect key="frame" x="0.0" y="64" width="768" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hDH-km-tcb">
+                                    <rect key="frame" x="0.0" y="3" width="768" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="amh-Kf-Gys" id="tUX-eN-99f"/>
+                                    </connections>
+                                </searchBar>
+                            </subviews>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="amh-Kf-Gys" id="11i-ha-q7a"/>
                             <outlet property="delegate" destination="amh-Kf-Gys" id="QXf-l7-wDb"/>
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="bg9-jH-ahg"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="f2n-IU-Lg6" id="GHd-dh-NWn"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JvE-VN-f4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="f2n-IU-Lg6">
+                    <connections>
+                        <outlet property="delegate" destination="amh-Kf-Gys" id="MlC-C4-ibM"/>
+                        <outlet property="searchBar" destination="hDH-km-tcb" id="icW-hu-ujc"/>
+                        <outlet property="searchContentsController" destination="amh-Kf-Gys" id="ahA-4e-fTt"/>
+                        <outlet property="searchResultsDataSource" destination="amh-Kf-Gys" id="7yt-Ts-Sz6"/>
+                        <outlet property="searchResultsDelegate" destination="amh-Kf-Gys" id="NhG-iW-zJU"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1168" y="-26"/>
         </scene>

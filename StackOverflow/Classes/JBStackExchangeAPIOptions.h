@@ -12,4 +12,8 @@
 
 @property (nonatomic, strong) NSString *siteParameter;
 
+@property (nonatomic, strong) NSString *inTitleQuery;
+
+- (NSDictionary *)queryParameters;
+
 @end

@@ -8,6 +8,26 @@
 
 #import "JBStackExchangeAPIOptions.h"
 
+NSString * const kStackExchangeRequestOptionSiteKey = @"site";
+NSString * const kStackExchangeRequestOptionInTitleQueryKey = @"intitle";
+
 @implementation JBStackExchangeAPIOptions
+
+- (NSDictionary *)queryParameters
+{
+    NSMutableDictionary *queryParameters = [[NSMutableDictionary alloc] init];
+    
+    if (self.siteParameter)
+    {
+        queryParameters[kStackExchangeRequestOptionSiteKey] = self.siteParameter;
+    }
+    
+    if (self.inTitleQuery)
+    {
+        queryParameters[kStackExchangeRequestOptionInTitleQueryKey] = self.inTitleQuery;
+    }
+    
+    return queryParameters;
+}
 
 @end

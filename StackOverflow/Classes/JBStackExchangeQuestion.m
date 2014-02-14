@@ -6,9 +6,15 @@
 //  Copyright (c) 2014 Josh Buchacher. All rights reserved.
 //
 
-#import "JBStackOverflowQuestion.h"
+#import "JBStackExchangeQuestion.h"
 
-@implementation JBStackOverflowQuestion
+@interface JBStackExchangeQuestion ()
+
+@property (nonatomic, strong) NSString *questionTitle;
+
+@end
+
+@implementation JBStackExchangeQuestion
 
 - (id)initWithDictionary:(NSDictionary *)dictionary
 {
@@ -48,6 +54,7 @@
          }
          
          */
+        _questionTitle = dictionary[@"title"];
     }
     
     return self;

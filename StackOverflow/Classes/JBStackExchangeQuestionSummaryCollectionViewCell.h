@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JBQuestionSummaryCollectionViewCell : UICollectionViewCell
+@interface JBStackExchangeQuestionSummaryCollectionViewCell : UICollectionViewCell
+
+@property (nonatomic, weak) IBOutlet UILabel *questionTitleLabel;
 
 @end

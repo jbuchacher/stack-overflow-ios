@@ -17,10 +17,21 @@ NSString * const kJBStackExchangePushToQuestionsSegueIdentifier = @"kJBStackExch
 @interface JBStackExchangeSitesViewController ()
 
 @property (nonatomic, strong) NSArray *stackExchangeSites;
+@property (nonatomic, strong) JBStackExchangeAPIOptions *apiOptions;
 
 @end
 
 @implementation JBStackExchangeSitesViewController
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder: aDecoder])
+    {
+        _apiOptions = [[JBStackExchangeAPIOptions alloc] init];
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -37,7 +48,8 @@ NSString * const kJBStackExchangePushToQuestionsSegueIdentifier = @"kJBStackExch
 
 - (void)loadStackExchangeSites
 {
-    [[JBStackExchangeAPIManager shared] fetchStackExchangeSitesWithSuccess:^(JBStackExchangeResponse *responseObject)
+    [[JBStackExchangeAPIManager shared] fetchStackExchangeSitesWithOptions: nil
+                                                                   success:^(JBStackExchangeResponse *responseObject)
      {
          self.stackExchangeSites = responseObject.items;
          [self.collectionView reloadData];
@@ -67,10 +79,14 @@ NSString * const kJBStackExchangePushToQuestionsSegueIdentifier = @"kJBStackExch
     JBStackExchangeSiteItem *item = self.stackExchangeSites[indexPath.row];
     
     [[JBStackExchangeAPIManager shared] fetchImageWithURLString: item.siteLogoURL
-                                                        success:^(UIImage *image)
+                                                        success: ^(UIImage *image)
     {
         cell.siteLogoImageView.image = image;
-    } failure: nil];
+    }
+                                                        failure: ^(NSError *error)
+     {
+         NSLog(@"Failed to fetch site logo: %@", error);
+     }];
     
     
     return cell;
@@ -82,9 +98,10 @@ NSString * const kJBStackExchangePushToQuestionsSegueIdentifier = @"kJBStackExch
     {
         NSIndexPath *indexPathOfSelectedCell = [self.collectionView indexPathForCell: sender];
         JBStackExchangeSiteItem *item = self.stackExchangeSites[indexPathOfSelectedCell.row];
+        self.apiOptions.siteParameter = item.siteAPIParameter;
         
-        JBStackExchangeAPIOptions *apiOptions = [[JBStackExchangeAPIManager shared] apiOptions];
-        apiOptions.siteParameter = item.siteAPIParameter;
+        JBStackExchangeSearchQuestionsViewController *searchViewController = [segue destinationViewController];
+        searchViewController.apiOptions = self.apiOptions;
     }
 }
 
