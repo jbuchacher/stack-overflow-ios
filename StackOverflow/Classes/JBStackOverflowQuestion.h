@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Josh Buchacher. All rights reserved.
 //
 
-#import "JBStackOverflowModel.h"
+#import "JBStackExchangeResponseItem.h"
 
-@interface JBStackOverflowQuestion : JBStackOverflowModel
+@interface JBStackOverflowQuestion : JBStackExchangeResponseItem
 
 @end

@@ -1,14 +1,14 @@
 //
-//  JBStackOverflowModel.h
+//  JBStackExchangeResponseItem.h
 //  StackOverflow
 //
-//  Created by Josh Buchacher on 2/12/14.
+//  Created by Joshua Buchacher on 2/13/14.
 //  Copyright (c) 2014 Josh Buchacher. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface JBStackOverflowModel : NSObject
+@interface JBStackExchangeResponseItem : NSObject
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 

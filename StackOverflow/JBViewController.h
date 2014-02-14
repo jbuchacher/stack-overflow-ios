@@ -10,4 +10,6 @@
 
 @interface JBViewController : UIViewController
 
+- (IBAction)fetchSites:(id)sender;
+
 @end

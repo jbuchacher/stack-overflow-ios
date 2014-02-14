@@ -7,6 +7,7 @@
 //
 
 #import "JBViewController.h"
+#import "JBStackOverflowAPIManager.h"
 
 @interface JBViewController ()
 
@@ -24,6 +25,18 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)fetchSites:(id)sender
+{
+    [[JBStackOverflowAPIManager shared] fetchStackExchangeSitesWithSuccess:^(JBStackExchangeResponse *responseObject)
+    {
+        
+    }
+                                                                   failure:^(NSError *error)
+    {
+    
+    }];
 }
 
 @end
