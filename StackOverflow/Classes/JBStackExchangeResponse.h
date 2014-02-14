@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const kStackExchangeResponseItemsKey;
+
 @interface JBStackExchangeResponse : NSObject
 
-/// By default, this is an array of JSON dictionaries. Items will be parsed (and mutated) before a successful response is received.
-/// See JBStackOverflowAPIManager's 'JBStackExchangeResponseParseBlock for more information.
+/// By default, this is an array of JBStackExchangeResponseItems. Items can be parsed (and mutated) using
+/// JBStackOverflowAPIManager's 'JBStackExchangeResponseParseBlock.
 @property (nonatomic, strong) NSArray *items;
 
 /// If YES, indicates there are more items available than included with this response.

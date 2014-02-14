@@ -1,5 +1,5 @@
 //
-//  JBViewController.h
+//  JBSearchQuestionsViewController.h
 //  StackOverflow
 //
 //  Created by Josh Buchacher on 2/12/14.
@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JBStackExchangeAPIOptions.h"
 
-@interface JBViewController : UIViewController
-
-- (IBAction)fetchSites:(id)sender;
+@interface JBStackExchangeSearchQuestionsViewController : UIViewController
 
 @end

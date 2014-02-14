@@ -13,4 +13,7 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+
+    // Import the API manager in the PCH for convenience.
+    #import "JBStackExchangeAPIManager.h"
 #endif

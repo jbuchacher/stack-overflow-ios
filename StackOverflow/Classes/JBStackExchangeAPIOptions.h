@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JBStackOverflowAPIOptions : NSObject
+@interface JBStackExchangeAPIOptions : NSObject
+
+@property (nonatomic, strong) NSString *siteParameter;
 
 @end

@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Josh Buchacher. All rights reserved.
 //
 
-#import "JBSearchQuestionsViewController.h"
+#import "JBStackExchangeSearchQuestionsViewController.h"
 
-@interface JBSearchQuestionsViewController ()
+@interface JBStackExchangeSearchQuestionsViewController ()
 
 @end
 
-@implementation JBSearchQuestionsViewController
+@implementation JBStackExchangeSearchQuestionsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Josh Buchacher. All rights reserved.
 //
 
-#import "JBStackOverflowAPIOptions.h"
+#import "JBStackExchangeAPIOptions.h"
 
-@implementation JBStackOverflowAPIOptions
+@implementation JBStackExchangeAPIOptions
 
 @end
