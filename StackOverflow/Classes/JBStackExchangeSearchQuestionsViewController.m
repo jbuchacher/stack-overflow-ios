@@ -7,8 +7,11 @@
 //
 
 #import "JBStackExchangeSearchQuestionsViewController.h"
+#import "JBStackExchangeQuestionDetailViewController.h"
 #import "JBStackExchangeQuestionSummaryCollectionViewCell.h"
 #import "JBStackExchangeQuestion.h"
+
+NSString * const kJBStackExchangePushToQuestionDetailsSegueIdentifier = @"kJBStackExchangePushToQuestionDetailsSegueIdentifier";
 
 @interface JBStackExchangeSearchQuestionsViewController () <UISearchBarDelegate>
 
@@ -86,14 +89,15 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-//    if ([segue.identifier isEqualToString: kJBStackExchangePushToQuestionsSegueIdentifier])
-//    {
-//        NSIndexPath *indexPathOfSelectedCell = [self.collectionView indexPathForCell: sender];
-//        JBStackExchangeSiteItem *item = self.stackExchangeSites[indexPathOfSelectedCell.row];
-//        
-//        JBStackExchangeAPIOptions *apiOptions = [[JBStackExchangeAPIManager shared] apiOptions];
-//        apiOptions.siteParameter = item.siteAPIParameter;
-//    }
+    if ([segue.identifier isEqualToString: kJBStackExchangePushToQuestionDetailsSegueIdentifier])
+    {
+        NSIndexPath *indexPathOfSelectedCell = [self.collectionView indexPathForCell: sender];
+        JBStackExchangeQuestion *question = self.stackExchangeQuestions[indexPathOfSelectedCell.row];
+        
+        JBStackExchangeQuestionDetailViewController *detailViewController = [segue destinationViewController];
+        detailViewController.question = question;
+        detailViewController.apiOptions = self.apiOptions;
+    }
 }
 
 @end

@@ -11,5 +11,6 @@
 @interface JBStackExchangeQuestion : JBStackExchangeResponseItem
 
 @property (nonatomic, strong, readonly) NSString *questionTitle;
+@property (nonatomic, strong, readonly) NSString *questionBodyHTML;
 
 @end

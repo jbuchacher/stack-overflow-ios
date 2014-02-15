@@ -54,7 +54,9 @@
          }
          
          */
+        
         _questionTitle = dictionary[@"title"];
+        _questionBodyHTML = dictionary[@"body"];
     }
     
     return self;

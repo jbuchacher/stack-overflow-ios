@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) NSString *inTitleQuery;
 
+@property (nonatomic, strong) NSString *filter;
+
 - (NSDictionary *)queryParameters;
 
 @end

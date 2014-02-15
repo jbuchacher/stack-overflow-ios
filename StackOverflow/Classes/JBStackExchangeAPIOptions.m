@@ -10,6 +10,7 @@
 
 NSString * const kStackExchangeRequestOptionSiteKey = @"site";
 NSString * const kStackExchangeRequestOptionInTitleQueryKey = @"intitle";
+NSString * const kStackExchangeRequestOptionFilterKey = @"filter";
 
 @implementation JBStackExchangeAPIOptions
 
@@ -25,6 +26,11 @@ NSString * const kStackExchangeRequestOptionInTitleQueryKey = @"intitle";
     if (self.inTitleQuery)
     {
         queryParameters[kStackExchangeRequestOptionInTitleQueryKey] = self.inTitleQuery;
+    }
+    
+    if (self.filter)
+    {
+        queryParameters[kStackExchangeRequestOptionFilterKey] = self.filter;
     }
     
     return queryParameters;

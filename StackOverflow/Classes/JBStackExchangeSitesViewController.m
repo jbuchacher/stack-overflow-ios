@@ -9,7 +9,6 @@
 #import "JBStackExchangeSitesViewController.h"
 #import "JBStackExchangeSitesCollectionViewCell.h"
 #import "JBStackExchangeSiteItem.h"
-#import "JBStackExchangeAPIOptions.h"
 #import "JBStackExchangeSearchQuestionsViewController.h"
 
 NSString * const kJBStackExchangePushToQuestionsSegueIdentifier = @"kJBStackExchangePushToQuestionsSegueIdentifier";

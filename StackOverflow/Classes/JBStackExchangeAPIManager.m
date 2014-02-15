@@ -30,7 +30,6 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
 
 @interface JBStackExchangeAPIManager ()
 
-@property (nonatomic, strong) JBStackExchangeAPIOptions *apiOptions;
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) NSOperationQueue *imageOperationQueue;
 
@@ -42,8 +41,9 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
 
 - (void)fetchStackExchangeQuestionsWithOptions:(JBStackExchangeAPIOptions *)options
                                        success:(JBStackExchangeSuccessBlock)success
-                                       failure:(JBStackExchangeFailureBlock)failure;
+                                       failure:(JBStackExchangeFailureBlock)failure
 {
+    options.filter = @"!9WgJfj3s4"; // TODO Need to handle filters better.
     NSURL *questionsURL = [self urlFromPath: kStackExchangeSearchQuestionsPath
                                     options: options];
     
@@ -261,9 +261,6 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
 {
     if (self = [super init])
     {
-        JBStackExchangeAPIOptions *apiOptions = [[JBStackExchangeAPIOptions alloc] init];
-        _apiOptions = apiOptions;
-        
         NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
         [sessionConfiguration setHTTPAdditionalHeaders: @{@"Content-Type" : @"application/json",
                                                           @"Accept" : @"application/json"}];
