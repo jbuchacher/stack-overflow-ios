@@ -13,11 +13,63 @@
                     </navigationBar>
                     <connections>
                         <segue destination="faE-Fg-jhk" kind="relationship" relationship="rootViewController" id="thV-tw-vvj"/>
+                        <segue destination="Sti-VO-mKy" kind="modal" identifier="kJBStackExchangeModalLoginSegueIdentifier" id="7ae-me-Tdu"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Goi-Bl-wWs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="455" y="389"/>
+            <point key="canvasLocation" x="-221" y="-341"/>
+        </scene>
+        <!--Stack Exchange Login View Controller-->
+        <scene sceneID="CFo-Ox-caC">
+            <objects>
+                <viewController storyboardIdentifier="JBStackExchangeLoginViewController" id="Sti-VO-mKy" customClass="JBStackExchangeLoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mmJ-7x-mbg"/>
+                        <viewControllerLayoutGuide type="bottom" id="q7p-q9-iho"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rYc-OG-iLt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S4z-e2-4xJ">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Sti-VO-mKy" id="vgh-Gu-I0Z"/>
+                                </connections>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aup-rE-cfr">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Cancel" id="ASI-gC-63n">
+                                        <connections>
+                                            <action selector="dismiss:" destination="Sti-VO-mKy" id="v1J-2H-aF0"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="S4z-e2-4xJ" secondAttribute="trailing" id="07n-U3-BBe"/>
+                            <constraint firstItem="aup-rE-cfr" firstAttribute="top" secondItem="mmJ-7x-mbg" secondAttribute="bottom" id="GRz-Fh-aOD"/>
+                            <constraint firstItem="S4z-e2-4xJ" firstAttribute="leading" secondItem="rYc-OG-iLt" secondAttribute="leading" id="J8S-bl-KKR"/>
+                            <constraint firstAttribute="trailing" secondItem="aup-rE-cfr" secondAttribute="trailing" id="OYA-EV-sek"/>
+                            <constraint firstItem="q7p-q9-iho" firstAttribute="top" secondItem="S4z-e2-4xJ" secondAttribute="bottom" id="W8q-BJ-hrt"/>
+                            <constraint firstItem="S4z-e2-4xJ" firstAttribute="top" secondItem="aup-rE-cfr" secondAttribute="bottom" id="YEU-n3-nIi"/>
+                            <constraint firstItem="aup-rE-cfr" firstAttribute="leading" secondItem="rYc-OG-iLt" secondAttribute="leading" id="vky-55-itk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginWebView" destination="S4z-e2-4xJ" id="Kd4-BY-Kh6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iaY-GC-qfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="319" y="390"/>
         </scene>
         <!--Stack Exchange Sites View Controller-->
         <scene sceneID="7JE-hU-pgj">
@@ -69,7 +121,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LUz-gH-tX6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="939" y="389"/>
+            <point key="canvasLocation" x="319" y="-341"/>
         </scene>
         <!--Stack Exchange Search Questions View Controller-->
         <scene sceneID="HNj-c7-IrM">
@@ -154,7 +206,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1430" y="389"/>
+            <point key="canvasLocation" x="810" y="-341"/>
         </scene>
         <!--Stack Exchange Question Detail View Controller-->
         <scene sceneID="BTj-OI-iSp">
@@ -246,7 +298,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbi-xl-bN9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1925" y="389"/>
+            <point key="canvasLocation" x="1305" y="-341"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

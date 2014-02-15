@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+NSString * const kJBStackExchangeLoginCallbackNotificationName;
+
 @interface JBAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

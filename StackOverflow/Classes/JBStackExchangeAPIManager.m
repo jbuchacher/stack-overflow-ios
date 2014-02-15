@@ -12,9 +12,12 @@
 #import "JBStackExchangeSiteItem.h"
 #import "JBStackExchangeQuestion.h"
 
+// Errors
+NSString * const JBStackExchangeAPIManagerErrorDomain = @"JBStackExchangeAPIManagerErrorDomain";
+
 // API Host
-NSString * const kStackExchangeDefaultHost = @"http://api.stackexchange.com/";
-// Sites API
+NSString * const kStackExchangeDefaultHost = @"https://api.stackexchange.com/";
+// Sites
 NSString * const kStackExchangeSitesPath = @"sites";
 // Questions
 NSString * const kStackExchangeSearchQuestionsPath = @"search";
@@ -39,13 +42,13 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
 
 #pragma mark - Search Questions
 
-- (void)fetchStackExchangeQuestionsWithOptions:(JBStackExchangeAPIOptions *)options
-                                       success:(JBStackExchangeSuccessBlock)success
-                                       failure:(JBStackExchangeFailureBlock)failure
+- (void)fetchStackExchangeQuestionsWithQuery:(JBStackExchangeSearchQuery *)query
+                                     success:(JBStackExchangeSuccessBlock)success
+                                     failure:(JBStackExchangeFailureBlock)failure
 {
-    options.filter = @"!9WgJfj3s4"; // TODO Need to handle filters better.
+    query.filter = @"!LR0Y.6RBe4l)H.4eMa.5JH";
     NSURL *questionsURL = [self urlFromPath: kStackExchangeSearchQuestionsPath
-                                    options: options];
+                                      query: query];
     
     JBStackExchangeResponseParseItemsBlock parseBlock = ^(NSDictionary *responseJSON)
     {
@@ -61,12 +64,11 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
 
 #pragma mark - Sites
 
-- (void)fetchStackExchangeSitesWithOptions:(JBStackExchangeAPIOptions *)options
-                                   success:(JBStackExchangeSuccessBlock)success
+- (void)fetchStackExchangeSitesWithSuccess:(JBStackExchangeSuccessBlock)success
                                    failure:(JBStackExchangeFailureBlock)failure
 {
     NSURL *sitesURL = [self urlFromPath: kStackExchangeSitesPath
-                                options: options];
+                                  query: nil];
     
     JBStackExchangeResponseParseItemsBlock parseBlock = ^(NSDictionary *responseJSON)
     {
@@ -150,10 +152,16 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
           NSLog(@"Received response: %@", response);
           if ([response isKindOfClass: [NSHTTPURLResponse class]])
           {
-              //NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-              //NSDictionary *headers = [httpResponse allHeaderFields];
-              
-              if (TRUE) // header validation)
+              if (error)
+              {
+                  if (failureBlock)
+                  {
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                          failureBlock(error);
+                      });
+                  }
+              }
+              else
               {
                   NSError *jsonParseError = nil;
                   NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData: data
@@ -161,17 +169,35 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
                                                                                  error: &jsonParseError];
                   if (jsonParseError)
                   {
-                      // handle error
+                      if (failureBlock)
+                      {
+                          dispatch_async(dispatch_get_main_queue(), ^{
+                              failureBlock(error);
+                          });
+                      }
                   }
                   else
                   {
-                      if (successBlock)
+                      JBStackExchangeResponse *response = [self responseFromJSONResponse: jsonResponse
+                                                                          parseItemBlock: parseItemBlock];
+                      
+                      if (response.error)
                       {
-                          JBStackExchangeResponse *response = [self responseFromJSONResponse: jsonResponse
-                                                                              parseItemBlock: parseItemBlock];
-                          dispatch_async(dispatch_get_main_queue(), ^{
-                              successBlock(response);
-                          });
+                          if (failureBlock)
+                          {
+                              dispatch_async(dispatch_get_main_queue(), ^{
+                                  failureBlock(response.error);
+                              });
+                          }
+                      }
+                      else
+                      {
+                          if (successBlock)
+                          {
+                              dispatch_async(dispatch_get_main_queue(), ^{
+                                  successBlock(response);
+                              });
+                          }
                       }
                   }
               }
@@ -214,23 +240,34 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
 #pragma mark - URL's & Query Strings
 
 - (NSURL *)urlFromPath:(NSString *)path
-               options:(JBStackExchangeAPIOptions *)apiOptions
+                 query:(JBStackExchangeQuery *)query
 {
     NSString *baseAndPathString = [kStackExchangeDefaultHost stringByAppendingPathComponent: path];
     NSMutableString *urlString = [[NSMutableString alloc] initWithString: baseAndPathString];
     
-    if (apiOptions && apiOptions.queryParameters.count)
+    if (query)
     {
-        [urlString appendString: [self queryStringFromOptions: apiOptions]];
+        [urlString appendString: [self queryStringFromQuery: query]];
     }
     
     return [NSURL URLWithString: urlString];
 }
 
-- (NSString *)queryStringFromOptions:(JBStackExchangeAPIOptions *)apiOptions
+- (NSString *)queryStringFromQuery:(JBStackExchangeQuery *)query
 {
     NSString *queryString = @"";
-    NSDictionary *queryParameters = apiOptions.queryParameters;
+    NSMutableDictionary *queryParameters = [NSMutableDictionary dictionaryWithDictionary: query.queryParameters];
+
+    if (self.apiOptions.accessToken)
+    {
+        queryParameters[kStackExchangeRequestOptionAccessTokenKey] = self.apiOptions.accessToken;
+        queryParameters[kStackExchangeRequestOptionAccessKeyKey] = self.apiOptions.apiKey;
+    }
+    
+    if (self.apiOptions.siteParameter)
+    {
+        queryParameters[kStackExchangeRequestOptionSiteKey] = self.apiOptions.siteParameter;
+    }
     
     if (queryParameters.count)
     {
@@ -255,6 +292,19 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
     return queryString;
 }
 
+#pragma mark - OAuth Login
+
+- (NSURLRequest *)createLoginRequest
+{
+    NSString *loginURLString = @"https://stackexchange.com/oauth/dialog?client_id=2621&redirect_uri=jbso://com.jbuchacher.stackoverflow/";
+    NSURL *loginURL = [NSURL URLWithString: loginURLString];
+    NSURLRequest *loginRequest = [NSURLRequest requestWithURL: loginURL
+                                                  cachePolicy: NSURLCacheStorageNotAllowed
+                                              timeoutInterval: 30];
+    
+    return loginRequest;
+}
+
 #pragma mark - Initialization
 
 - (id)init
@@ -267,6 +317,8 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
         
         _session = [NSURLSession sessionWithConfiguration: sessionConfiguration];
         _imageOperationQueue = [[NSOperationQueue alloc] init];
+        
+        _apiOptions = [[JBStackExchangeAPIOptions alloc] init];
     }
     
     return self;

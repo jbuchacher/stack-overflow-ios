@@ -13,6 +13,5 @@
 @interface JBStackExchangeQuestionDetailViewController : UICollectionViewController
 
 @property (nonatomic, weak) JBStackExchangeQuestion *question;
-@property (nonatomic, weak) JBStackExchangeAPIOptions *apiOptions;
 
 @end

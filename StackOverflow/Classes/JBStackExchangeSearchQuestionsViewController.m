@@ -11,6 +11,7 @@
 #import "JBStackExchangeQuestionSummaryCollectionViewCell.h"
 #import "JBStackExchangeQuestion.h"
 
+NSString * const kJBStackExchangeModalLoginSegueIdentifier = @"kJBStackExchangeModalLoginSegueIdentifier";
 NSString * const kJBStackExchangePushToQuestionDetailsSegueIdentifier = @"kJBStackExchangePushToQuestionDetailsSegueIdentifier";
 
 @interface JBStackExchangeSearchQuestionsViewController () <UISearchBarDelegate>
@@ -26,17 +27,22 @@ NSString * const kJBStackExchangePushToQuestionDetailsSegueIdentifier = @"kJBSta
     [super viewWillAppear: animated];
 }
 
-- (void)loadStackExchangeQuestions
+- (void)loadStackExchangeQuestionsWithSearchText:(NSString *)searchText
 {
-    [[JBStackExchangeAPIManager shared] fetchStackExchangeQuestionsWithOptions: self.apiOptions
-                                                                       success:^(JBStackExchangeResponse *responseObject)
+    JBStackExchangeSearchQuery *query = [[JBStackExchangeSearchQuery alloc] init];
+    query.inTitleQuery = searchText;
+    
+    [[JBStackExchangeAPIManager shared] fetchStackExchangeQuestionsWithQuery: query
+                                                                     success:^(JBStackExchangeResponse *responseObject)
      {
          self.stackExchangeQuestions = responseObject.items;
          [self.collectionView reloadData];
      }
-                                                                       failure:^(NSError *error)
+                                                                     failure:^(NSError *error)
      {
-         NSLog(@"Failed to fetch sites: %@", error);
+         [self.navigationController performSegueWithIdentifier: @"kJBStackExchangeModalLoginSegueIdentifier" sender: self];
+         
+         NSLog(@"Failed to fetch questions: %@", error);
      }];
 }
 
@@ -82,8 +88,7 @@ NSString * const kJBStackExchangePushToQuestionDetailsSegueIdentifier = @"kJBSta
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    self.apiOptions.inTitleQuery = searchBar.text;
-    [self loadStackExchangeQuestions];
+    [self loadStackExchangeQuestionsWithSearchText: searchBar.text];
 }
 
 
@@ -96,7 +101,6 @@ NSString * const kJBStackExchangePushToQuestionDetailsSegueIdentifier = @"kJBSta
         
         JBStackExchangeQuestionDetailViewController *detailViewController = [segue destinationViewController];
         detailViewController.question = question;
-        detailViewController.apiOptions = self.apiOptions;
     }
 }
 

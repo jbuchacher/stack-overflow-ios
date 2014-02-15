@@ -8,14 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const kStackExchangeRequestOptionSiteKey;
+
+extern NSString * const kStackExchangeRequestOptionAccessTokenKey;
+extern NSString * const kStackExchangeRequestOptionAccessKeyKey;
+
 @interface JBStackExchangeAPIOptions : NSObject
 
 @property (nonatomic, strong) NSString *siteParameter;
-
-@property (nonatomic, strong) NSString *inTitleQuery;
-
-@property (nonatomic, strong) NSString *filter;
-
-- (NSDictionary *)queryParameters;
+@property (nonatomic, strong, readonly) NSString *apiKey;
+@property (nonatomic, strong) NSString *accessToken;
 
 @end

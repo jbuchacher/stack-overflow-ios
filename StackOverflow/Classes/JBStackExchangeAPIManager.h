@@ -10,23 +10,27 @@
 #import "JBStackExchangeResponse.h"
 #import "JBStackExchangeResponseItem.h"
 #import "JBStackExchangeAPIOptions.h"
+#import "JBStackExchangeSearchQuery.h"
 
 typedef void (^JBStackExchangeSuccessBlock)(JBStackExchangeResponse *responseObject);
 typedef void (^JBStackExchangeFailureBlock)(NSError *error);
 
 @interface JBStackExchangeAPIManager : NSObject
 
-- (void)fetchStackExchangeQuestionsWithOptions:(JBStackExchangeAPIOptions *)options
-                                       success:(JBStackExchangeSuccessBlock)success
-                                       failure:(JBStackExchangeFailureBlock)failure;
+@property (nonatomic, strong) JBStackExchangeAPIOptions *apiOptions;
 
-- (void)fetchStackExchangeSitesWithOptions:(JBStackExchangeAPIOptions *)options
-                                   success:(JBStackExchangeSuccessBlock)success
+- (void)fetchStackExchangeQuestionsWithQuery:(JBStackExchangeSearchQuery *)query
+                                     success:(JBStackExchangeSuccessBlock)success
+                                     failure:(JBStackExchangeFailureBlock)failure;
+
+- (void)fetchStackExchangeSitesWithSuccess:(JBStackExchangeSuccessBlock)success
                                    failure:(JBStackExchangeFailureBlock)failure;
 
 - (void)fetchImageWithURLString:(NSString *)urlString
                         success:(void (^)(UIImage *image))imageSuccessBlock
                         failure:(JBStackExchangeFailureBlock)failure;
+
+- (NSURLRequest *)createLoginRequest;
 
 + (instancetype)shared;
 

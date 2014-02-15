@@ -11,6 +11,4 @@
 
 @interface JBStackExchangeSearchQuestionsViewController : UICollectionViewController
 
-@property (nonatomic, weak) JBStackExchangeAPIOptions *apiOptions;
-
 @end

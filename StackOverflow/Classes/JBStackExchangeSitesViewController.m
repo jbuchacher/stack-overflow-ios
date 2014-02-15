@@ -16,21 +16,10 @@ NSString * const kJBStackExchangePushToQuestionsSegueIdentifier = @"kJBStackExch
 @interface JBStackExchangeSitesViewController ()
 
 @property (nonatomic, strong) NSArray *stackExchangeSites;
-@property (nonatomic, strong) JBStackExchangeAPIOptions *apiOptions;
 
 @end
 
 @implementation JBStackExchangeSitesViewController
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    if (self = [super initWithCoder: aDecoder])
-    {
-        _apiOptions = [[JBStackExchangeAPIOptions alloc] init];
-    }
-    
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -47,8 +36,7 @@ NSString * const kJBStackExchangePushToQuestionsSegueIdentifier = @"kJBStackExch
 
 - (void)loadStackExchangeSites
 {
-    [[JBStackExchangeAPIManager shared] fetchStackExchangeSitesWithOptions: nil
-                                                                   success:^(JBStackExchangeResponse *responseObject)
+    [[JBStackExchangeAPIManager shared] fetchStackExchangeSitesWithSuccess:^(JBStackExchangeResponse *responseObject)
      {
          self.stackExchangeSites = responseObject.items;
          [self.collectionView reloadData];
@@ -97,10 +85,8 @@ NSString * const kJBStackExchangePushToQuestionsSegueIdentifier = @"kJBStackExch
     {
         NSIndexPath *indexPathOfSelectedCell = [self.collectionView indexPathForCell: sender];
         JBStackExchangeSiteItem *item = self.stackExchangeSites[indexPathOfSelectedCell.row];
-        self.apiOptions.siteParameter = item.siteAPIParameter;
         
-        JBStackExchangeSearchQuestionsViewController *searchViewController = [segue destinationViewController];
-        searchViewController.apiOptions = self.apiOptions;
+        [[JBStackExchangeAPIManager shared] apiOptions].siteParameter = item.siteAPIParameter;
     }
 }
 
