@@ -32,37 +32,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mpE-cL-JIe">
-                                <rect key="frame" x="0.0" y="20" width="540" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem title="Cancel" id="YgG-Um-LN2">
-                                        <connections>
-                                            <action selector="dismiss:" destination="zun-Cs-dmU" id="FMn-40-Uig"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w0h-wJ-od0">
-                                <rect key="frame" x="0.0" y="64" width="540" height="556"/>
+                                <rect key="frame" x="0.0" y="64" width="540" height="512"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="zun-Cs-dmU" id="h23-GS-Ih6"/>
                                 </connections>
                             </webView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulU-bC-fTg">
+                                <rect key="frame" x="0.0" y="20" width="540" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Login" id="PsF-aS-lUk">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="YgG-Um-LN2">
+                                            <connections>
+                                                <action selector="dismiss:" destination="zun-Cs-dmU" id="FMn-40-Uig"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="aHb-jt-Vvi" firstAttribute="top" secondItem="w0h-wJ-od0" secondAttribute="bottom" id="2BB-Oa-EjE"/>
                             <constraint firstAttribute="trailing" secondItem="w0h-wJ-od0" secondAttribute="trailing" id="Ozu-iI-SIJ"/>
-                            <constraint firstAttribute="trailing" secondItem="mpE-cL-JIe" secondAttribute="trailing" id="Rnb-Mf-oDO"/>
-                            <constraint firstItem="w0h-wJ-od0" firstAttribute="top" secondItem="mpE-cL-JIe" secondAttribute="bottom" id="UuF-BB-4ZQ"/>
                             <constraint firstItem="w0h-wJ-od0" firstAttribute="leading" secondItem="5Ln-Ag-aQY" secondAttribute="leading" id="Xrb-ce-h5w"/>
-                            <constraint firstItem="mpE-cL-JIe" firstAttribute="leading" secondItem="5Ln-Ag-aQY" secondAttribute="leading" id="bei-UF-UHq"/>
-                            <constraint firstItem="mpE-cL-JIe" firstAttribute="top" secondItem="a8L-bl-VOA" secondAttribute="bottom" id="nQe-Bp-s6J"/>
+                            <constraint firstItem="w0h-wJ-od0" firstAttribute="top" secondItem="ulU-bC-fTg" secondAttribute="bottom" id="ZF7-2q-pu4"/>
+                            <constraint firstItem="ulU-bC-fTg" firstAttribute="leading" secondItem="5Ln-Ag-aQY" secondAttribute="leading" id="hao-5U-tYc"/>
+                            <constraint firstItem="ulU-bC-fTg" firstAttribute="top" secondItem="a8L-bl-VOA" secondAttribute="bottom" id="t7B-fi-RCl"/>
+                            <constraint firstAttribute="trailing" secondItem="ulU-bC-fTg" secondAttribute="trailing" id="uGr-Of-VeY"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="loginWebView" destination="w0h-wJ-od0" id="gym-Ik-tF7"/>
@@ -72,7 +76,7 @@
             </objects>
             <point key="canvasLocation" x="239" y="1221"/>
         </scene>
-        <!--Stack Exchange Sites View Controller-->
+        <!--Stack Exchange Sites View Controller - Site Directory-->
         <scene sceneID="i0o-b7-roo">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="OFf-jP-Eo9" customClass="JBStackExchangeSitesViewController" sceneMemberID="viewController">
@@ -120,13 +124,15 @@
                             <outlet property="delegate" destination="OFf-jP-Eo9" id="f2c-Ux-Qpi"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="aFg-pE-GTr"/>
+                    <navigationItem key="navigationItem" title="Site Directory" id="aFg-pE-GTr">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="GdH-7s-xHm"/>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6wI-jh-ShJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="239" y="-26"/>
         </scene>
-        <!--Stack Exchange Search Questions View Controller-->
+        <!--Stack Exchange Search Questions View Controller - Search Questions-->
         <scene sceneID="5x3-RC-KNj">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="amh-Kf-Gys" customClass="JBStackExchangeSearchQuestionsViewController" sceneMemberID="viewController">
@@ -194,7 +200,7 @@
                             <outlet property="delegate" destination="amh-Kf-Gys" id="QXf-l7-wDb"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="bg9-jH-ahg"/>
+                    <navigationItem key="navigationItem" title="Search Questions" id="bg9-jH-ahg"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="f2n-IU-Lg6" id="GHd-dh-NWn"/>
                     </connections>

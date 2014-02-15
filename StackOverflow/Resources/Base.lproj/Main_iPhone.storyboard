@@ -33,36 +33,40 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S4z-e2-4xJ">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="Sti-VO-mKy" id="vgh-Gu-I0Z"/>
                                 </connections>
                             </webView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aup-rE-cfr">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08J-BL-crh">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <barButtonItem title="Cancel" id="ASI-gC-63n">
-                                        <connections>
-                                            <action selector="dismiss:" destination="Sti-VO-mKy" id="v1J-2H-aF0"/>
-                                        </connections>
-                                    </barButtonItem>
+                                    <navigationItem title="Login" id="Ime-sv-k8a">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="ASI-gC-63n">
+                                            <connections>
+                                                <action selector="dismiss:" destination="Sti-VO-mKy" id="v1J-2H-aF0"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
-                            </toolbar>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="S4z-e2-4xJ" secondAttribute="trailing" id="07n-U3-BBe"/>
-                            <constraint firstItem="aup-rE-cfr" firstAttribute="top" secondItem="mmJ-7x-mbg" secondAttribute="bottom" id="GRz-Fh-aOD"/>
+                            <constraint firstAttribute="trailing" secondItem="08J-BL-crh" secondAttribute="trailing" id="1d5-0T-r4p"/>
+                            <constraint firstItem="S4z-e2-4xJ" firstAttribute="top" secondItem="08J-BL-crh" secondAttribute="bottom" id="IFK-FR-fLK"/>
                             <constraint firstItem="S4z-e2-4xJ" firstAttribute="leading" secondItem="rYc-OG-iLt" secondAttribute="leading" id="J8S-bl-KKR"/>
-                            <constraint firstAttribute="trailing" secondItem="aup-rE-cfr" secondAttribute="trailing" id="OYA-EV-sek"/>
                             <constraint firstItem="q7p-q9-iho" firstAttribute="top" secondItem="S4z-e2-4xJ" secondAttribute="bottom" id="W8q-BJ-hrt"/>
-                            <constraint firstItem="S4z-e2-4xJ" firstAttribute="top" secondItem="aup-rE-cfr" secondAttribute="bottom" id="YEU-n3-nIi"/>
-                            <constraint firstItem="aup-rE-cfr" firstAttribute="leading" secondItem="rYc-OG-iLt" secondAttribute="leading" id="vky-55-itk"/>
+                            <constraint firstItem="08J-BL-crh" firstAttribute="top" secondItem="mmJ-7x-mbg" secondAttribute="bottom" id="a5t-qP-Efk"/>
+                            <constraint firstItem="08J-BL-crh" firstAttribute="leading" secondItem="rYc-OG-iLt" secondAttribute="leading" id="lN2-1i-Y1t"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="loginWebView" destination="S4z-e2-4xJ" id="Kd4-BY-Kh6"/>
                     </connections>
@@ -71,7 +75,7 @@
             </objects>
             <point key="canvasLocation" x="319" y="390"/>
         </scene>
-        <!--Stack Exchange Sites View Controller-->
+        <!--Stack Exchange Sites View Controller - Site Directory-->
         <scene sceneID="7JE-hU-pgj">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="faE-Fg-jhk" customClass="JBStackExchangeSitesViewController" sceneMemberID="viewController">
@@ -117,13 +121,15 @@
                             <outlet property="delegate" destination="faE-Fg-jhk" id="Xy7-SZ-NXg"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="QqZ-wl-dxx"/>
+                    <navigationItem key="navigationItem" title="Site Directory" id="QqZ-wl-dxx">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="tzq-Pq-tU2"/>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LUz-gH-tX6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="319" y="-341"/>
         </scene>
-        <!--Stack Exchange Search Questions View Controller-->
+        <!--Stack Exchange Search Questions View Controller - Search Questions-->
         <scene sceneID="HNj-c7-IrM">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="5mD-eA-BI3" customClass="JBStackExchangeSearchQuestionsViewController" sceneMemberID="viewController">
@@ -170,7 +176,7 @@
                             <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="vhu-wC-4Pw">
+                                <searchBar contentMode="redraw" placeholder="How do I make app?" translatesAutoresizingMaskIntoConstraints="NO" id="vhu-wC-4Pw">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -191,7 +197,7 @@
                             <outlet property="delegate" destination="5mD-eA-BI3" id="Ztg-RH-8jj"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="ozO-uZ-qi9"/>
+                    <navigationItem key="navigationItem" title="Search Questions" id="ozO-uZ-qi9"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="Vkf-cv-qbG" id="3vT-va-Bhf"/>
                     </connections>
