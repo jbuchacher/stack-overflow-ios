@@ -8,6 +8,10 @@
 
 #import "JBStackExchangeResponseItem.h"
 
+NSString * const kStackExchangeResponseItemBodyKey = @"body";
+NSString * const kStackExchangeResponseItemTitleKey = @"title";
+NSString * const kStackExchangeResponseItemAnswersKey = @"answers";
+
 @implementation JBStackExchangeResponseItem
 
 - (id)initWithDictionary:(NSDictionary *)dictionary

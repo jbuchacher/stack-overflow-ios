@@ -8,7 +8,9 @@
 
 #import "JBStackExchangeQuestionDetailViewController.h"
 #import "JBStackExchangeQuestionDetailCollectionViewCell.h"
+#import "JBStackExchangeAnswerSummaryCollectionViewCell.h"
 #import "JBStackExchangeQuestion.h"
+#import "JBStackExchangeAnswer.h"
 
 @interface JBStackExchangeQuestionDetailViewController ()
 
@@ -20,12 +22,33 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 1;
+    NSInteger numberOfSections = self.question ? 1 : 0;
+    
+    if (self.question.questionAnswers.count)
+    {
+        numberOfSections++;
+    }
+    
+    return numberOfSections;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 1;
+    switch (section)
+    {
+        case 0:
+        {
+            return 1;
+        }
+            break;
+        case 1:
+        {
+            return self.question.questionAnswers.count;
+        }
+            break;
+    }
+    
+    return 0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -52,6 +75,18 @@
             
             break;
         }
+        case 1:
+        {
+            JBStackExchangeAnswerSummaryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier: @"JBStackExchangeAnswerSummaryCollectionViewCell"
+                                                                                                              forIndexPath: indexPath];
+            
+            JBStackExchangeAnswer *answer = self.question.questionAnswers[indexPath.row];
+            [cell.answerBodyWebView loadHTMLString: answer.answerBodyHTML
+                                             baseURL: nil];
+            
+            return cell;
+        }
+            break;
     }
     
     return nil;

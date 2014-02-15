@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const kStackExchangeResponseItemBodyKey;
+extern NSString * const kStackExchangeResponseItemTitleKey;
+extern NSString * const kStackExchangeResponseItemAnswersKey;
+
 @interface JBStackExchangeResponseItem : NSObject
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;

@@ -7,10 +7,13 @@
 //
 
 #import "JBStackExchangeQuestion.h"
+#import "JBStackExchangeAnswer.h"
 
 @interface JBStackExchangeQuestion ()
 
 @property (nonatomic, strong) NSString *questionTitle;
+@property (nonatomic, strong) NSString *questionBodyHTML;
+@property (nonatomic, strong) NSArray *questionAnswers;
 
 @end
 
@@ -55,8 +58,18 @@
          
          */
         
-        _questionTitle = dictionary[@"title"];
-        _questionBodyHTML = dictionary[@"body"];
+        _questionTitle = dictionary[kStackExchangeResponseItemTitleKey];
+        _questionBodyHTML = dictionary[kStackExchangeResponseItemBodyKey];
+        
+        NSDictionary *answersJSON = dictionary[kStackExchangeResponseItemAnswersKey];
+        NSMutableArray *answers = [NSMutableArray arrayWithCapacity: answersJSON.count];
+        for (NSDictionary *answerJSON in answers)
+        {
+            JBStackExchangeAnswer *answer = [[JBStackExchangeAnswer alloc] initWithDictionary: answerJSON];
+            [answers addObject: answer];
+        }
+        
+        _questionAnswers = answers;
     }
     
     return self;

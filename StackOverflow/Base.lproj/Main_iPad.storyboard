@@ -213,6 +213,30 @@
                                     <outlet property="questionTitleLabel" destination="knG-P3-1Gj" id="oMD-zO-6Ln"/>
                                 </connections>
                             </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="JBStackExchangeAnswerSummaryCollectionViewCell" id="mIH-c6-fzB" customClass="JBStackExchangeAnswerSummaryCollectionViewCell">
+                                <rect key="frame" x="33" y="679" width="702" height="605"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="702" height="605"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <webView contentMode="scaleToFill" placeholderIntrinsicWidth="662" placeholderIntrinsicHeight="536" translatesAutoresizingMaskIntoConstraints="NO" id="6K1-If-PgN">
+                                            <rect key="frame" x="20" y="20" width="662" height="565"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </webView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="6K1-If-PgN" firstAttribute="leading" secondItem="mIH-c6-fzB" secondAttribute="leading" constant="20" id="9Ve-Wr-oao"/>
+                                    <constraint firstItem="6K1-If-PgN" firstAttribute="top" secondItem="mIH-c6-fzB" secondAttribute="top" constant="20" id="Cwv-Vz-Xmm"/>
+                                    <constraint firstAttribute="bottom" secondItem="6K1-If-PgN" secondAttribute="bottom" constant="20" id="FUH-Be-Hzy"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="answerBodyWebView" destination="6K1-If-PgN" id="WIu-Dz-tKq"/>
+                                </connections>
+                            </collectionViewCell>
                         </cells>
                         <connections>
                             <outlet property="dataSource" destination="KXa-GD-gTO" id="KeU-Ps-IYc"/>

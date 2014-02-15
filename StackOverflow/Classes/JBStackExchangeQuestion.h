@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong, readonly) NSString *questionTitle;
 @property (nonatomic, strong, readonly) NSString *questionBodyHTML;
+@property (nonatomic, strong, readonly) NSArray *questionAnswers;
 
 @end
