@@ -63,7 +63,7 @@
         
         NSDictionary *answersJSON = dictionary[kStackExchangeResponseItemAnswersKey];
         NSMutableArray *answers = [NSMutableArray arrayWithCapacity: answersJSON.count];
-        for (NSDictionary *answerJSON in answers)
+        for (NSDictionary *answerJSON in answersJSON)
         {
             JBStackExchangeAnswer *answer = [[JBStackExchangeAnswer alloc] initWithDictionary: answerJSON];
             [answers addObject: answer];

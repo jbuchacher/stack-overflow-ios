@@ -79,10 +79,7 @@
         {
             JBStackExchangeAnswerSummaryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier: @"JBStackExchangeAnswerSummaryCollectionViewCell"
                                                                                                               forIndexPath: indexPath];
-            
-            JBStackExchangeAnswer *answer = self.question.questionAnswers[indexPath.row];
-            [cell.answerBodyWebView loadHTMLString: answer.answerBodyHTML
-                                             baseURL: nil];
+            cell.answer = self.question.questionAnswers[indexPath.row];
             
             return cell;
         }

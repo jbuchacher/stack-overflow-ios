@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class JBStackExchangeAnswer;
+
 @interface JBStackExchangeAnswerSummaryCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, weak) IBOutlet UIWebView *answerBodyWebView;
+@property (nonatomic, weak) JBStackExchangeAnswer *answer;
 
 @end

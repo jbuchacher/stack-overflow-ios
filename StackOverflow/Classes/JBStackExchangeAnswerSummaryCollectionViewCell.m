@@ -7,25 +7,27 @@
 //
 
 #import "JBStackExchangeAnswerSummaryCollectionViewCell.h"
+#import "JBStackExchangeAnswer.h"
+
+@interface JBStackExchangeAnswerSummaryCollectionViewCell ()
+
+@property (nonatomic, weak) IBOutlet UIWebView *answerBodyWebView;
+
+@end
 
 @implementation JBStackExchangeAnswerSummaryCollectionViewCell
 
-- (id)initWithFrame:(CGRect)frame
+- (void)prepareForReuse
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+    [self.answerBodyWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)setAnswer:(JBStackExchangeAnswer *)answer
 {
-    // Drawing code
+    _answer = answer;
+    
+    [self.answerBodyWebView loadHTMLString: answer.answerBodyHTML
+                                   baseURL: nil];
 }
-*/
 
 @end
