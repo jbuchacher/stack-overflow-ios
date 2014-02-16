@@ -10,6 +10,7 @@
 
 NSString * const kStackExchangeRequestOptionInTitleQueryKey = @"intitle";
 NSString * const kStackExchangeRequestOptionFilterKey = @"filter";
+NSString * const kStackExchangeRequestOptionPageKey = @"page";
 
 @implementation JBStackExchangeSearchQuery
 
@@ -26,7 +27,17 @@ NSString * const kStackExchangeRequestOptionFilterKey = @"filter";
         queryParameters[kStackExchangeRequestOptionFilterKey] = self.filter;
     }
     
+    if (self.pageNumber)
+    {
+        queryParameters[kStackExchangeRequestOptionPageKey] = [NSNumber numberWithInteger: self.pageNumber];
+    }
+    
     return queryParameters;
+}
+
+- (void)setInTitleQuery:(NSString *)inTitleQuery
+{
+    _inTitleQuery = inTitleQuery;
 }
 
 @end

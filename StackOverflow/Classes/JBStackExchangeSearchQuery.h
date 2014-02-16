@@ -15,5 +15,6 @@ extern NSString * const kStackExchangeRequestOptionFilterKey;
 
 @property (nonatomic, strong) NSString *inTitleQuery;
 @property (nonatomic, strong) NSString *filter;
+@property (nonatomic, assign) NSInteger pageNumber;
 
 @end

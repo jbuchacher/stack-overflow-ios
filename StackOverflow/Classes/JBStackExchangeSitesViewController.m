@@ -43,6 +43,8 @@ NSString * const kJBStackExchangePushToQuestionsSegueIdentifier = @"kJBStackExch
      }
                                                                    failure:^(NSError *error)
      {
+         [self.navigationController performSegueWithIdentifier: @"kJBStackExchangeModalLoginSegueIdentifier" sender: self];
+         
          NSLog(@"Failed to fetch sites: %@", error);
      }];
 }
