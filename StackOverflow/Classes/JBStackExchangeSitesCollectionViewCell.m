@@ -10,22 +10,9 @@
 
 @implementation JBStackExchangeSitesCollectionViewCell
 
-- (id)initWithFrame:(CGRect)frame
+- (void)prepareForReuse
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+    self.siteLogoImageView.image = nil;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end
