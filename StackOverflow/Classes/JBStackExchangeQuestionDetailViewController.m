@@ -13,7 +13,15 @@
 #import "JBStackExchangeQuestion.h"
 #import "JBStackExchangeAnswer.h"
 
-@interface JBStackExchangeQuestionDetailViewController ()
+enum
+{
+    JBStackExchangeQuestionDetailsSectionQuestion,
+    JBStackExchangeQuestionDetailsSectionOwner,
+    JBStackExchangeQuestionDetailsSectionAnswers,
+    JBStackExchangeQuestionDetailsNumberOfSections
+};
+
+@interface JBStackExchangeQuestionDetailViewController () <UICollectionViewDelegateFlowLayout>
 
 @end
 
@@ -23,16 +31,16 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    NSInteger numberOfSections = 0;
+    NSInteger numberOfSections = JBStackExchangeQuestionDetailsNumberOfSections;
     
-    if (self.question)
+    if (!self.question)
     {
-        numberOfSections += 2; // One for question, one for owner.
+        numberOfSections -= 2; // One for question, one for owner.
     }
     
-    if (self.question.questionAnswers.count)
+    if (!self.question.questionAnswers.count)
     {
-        numberOfSections++;
+        numberOfSections--;
     }
     
     return numberOfSections;
@@ -42,17 +50,17 @@
 {
     switch (section)
     {
-        case 0:
+        case JBStackExchangeQuestionDetailsSectionQuestion:
         {
             return 1;
         }
             break;
-        case 1:
+        case JBStackExchangeQuestionDetailsSectionOwner:
         {
             return 1;
         }
             break;
-        case 2:
+        case JBStackExchangeQuestionDetailsSectionAnswers:
         {
             return self.question.questionAnswers.count;
         }
@@ -66,7 +74,7 @@
 {
     switch (indexPath.section)
     {
-        case 0:
+        case JBStackExchangeQuestionDetailsSectionQuestion:
         {
             switch (indexPath.row)
             {
@@ -86,7 +94,7 @@
             
             break;
         }
-        case 1:
+        case JBStackExchangeQuestionDetailsSectionOwner:
         {
             JBStackExchangeQuestionOwnerCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier: @"JBStackExchangeQuestionOwnerCollectionViewCell"
                                                                                                              forIndexPath: indexPath];
@@ -95,7 +103,7 @@
             return cell;
         }
             break;
-        case 2:
+        case JBStackExchangeQuestionDetailsSectionAnswers:
         {
             JBStackExchangeAnswerSummaryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier: @"JBStackExchangeAnswerSummaryCollectionViewCell"
                                                                                                               forIndexPath: indexPath];
@@ -107,6 +115,30 @@
     }
     
     return nil;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.section)
+    {
+        case JBStackExchangeQuestionDetailsSectionQuestion:
+        {
+            return CGSizeMake(300, 400);
+        }
+            break;
+        case JBStackExchangeQuestionDetailsSectionOwner:
+        {
+            return CGSizeMake(300, 110);
+        }
+            break;
+        case JBStackExchangeQuestionDetailsSectionAnswers:
+        {
+            return CGSizeMake(300, 400);
+        }
+            break;
+    }
+    
+    return CGSizeZero;
 }
 
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
