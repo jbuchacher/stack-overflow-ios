@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "JBStackExchangeAPIOptions.h"
 
+extern NSString * const kJBStackExchangeModalLoginViewControllerIdentifier;
+
 @interface JBStackExchangeSearchQuestionsViewController : UICollectionViewController
 
 @end

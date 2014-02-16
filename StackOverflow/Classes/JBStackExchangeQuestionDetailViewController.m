@@ -128,7 +128,7 @@ enum
             break;
         case JBStackExchangeQuestionDetailsSectionOwner:
         {
-            return CGSizeMake(300, 110);
+            return CGSizeMake(300, 100);
         }
             break;
         case JBStackExchangeQuestionDetailsSectionAnswers:

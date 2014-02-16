@@ -8,8 +8,9 @@
 
 #import "JBStackExchangeSitesViewController.h"
 #import "JBStackExchangeSitesCollectionViewCell.h"
-#import "JBStackExchangeSiteItem.h"
 #import "JBStackExchangeSearchQuestionsViewController.h"
+#import "JBStackExchangeLoginViewController.h"
+#import "JBStackExchangeSiteItem.h"
 
 NSString * const kJBStackExchangePushToQuestionsSegueIdentifier = @"kJBStackExchangePushToQuestionsSegueIdentifier";
 
@@ -43,7 +44,20 @@ NSString * const kJBStackExchangePushToQuestionsSegueIdentifier = @"kJBStackExch
      }
                                                                    failure:^(NSError *error)
      {
-         [self.navigationController performSegueWithIdentifier: @"kJBStackExchangeModalLoginSegueIdentifier" sender: self];
+         JBStackExchangeLoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier: kJBStackExchangeModalLoginViewControllerIdentifier];
+         loginViewController.loginHandler = ^(BOOL loginSuccess)
+         {
+             if (loginSuccess)
+             {
+                 [self loadStackExchangeSites];
+             }
+             else
+             {
+                 [[[UIAlertView alloc] initWithTitle: @"Login Error" message: @"Unable to complete login process." delegate: nil cancelButtonTitle: @"OK" otherButtonTitles: nil] show];
+             }
+         };
+         
+         [self.navigationController presentViewController: loginViewController animated: YES completion: nil];
          
          NSLog(@"Failed to fetch sites: %@", error);
      }];

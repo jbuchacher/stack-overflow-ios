@@ -11,5 +11,6 @@
 @interface JBStackExchangeLoginViewController : UIViewController <UIWebViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UIWebView *loginWebView;
+@property (copy) void (^loginHandler)(BOOL loginSuccess);
 
 @end

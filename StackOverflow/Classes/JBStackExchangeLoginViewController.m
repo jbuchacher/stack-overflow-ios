@@ -39,7 +39,13 @@ extern NSString * const kJBStackExchangeLoginCallbackNotificationName;
 - (IBAction)dismiss:(id)sender
 {
     [self.presentingViewController dismissViewControllerAnimated: YES
-                                                      completion: nil];
+                                                      completion: ^
+     {
+         if (self.loginHandler)
+         {
+             self.loginHandler(NO);
+         };
+     }];
 }
 
 - (void)handleLoginCallback:(NSNotification *)notification
@@ -58,7 +64,14 @@ extern NSString * const kJBStackExchangeLoginCallbackNotificationName;
     
     [[JBStackExchangeAPIManager shared] apiOptions].accessToken = keyValueDictionary[@"access_token"];
     
-    [self dismiss: nil];
+    [self.presentingViewController dismissViewControllerAnimated: YES
+                                                      completion: ^
+     {
+         if (self.loginHandler)
+         {
+             self.loginHandler(YES);
+         };
+     }];
 }
 
 @end

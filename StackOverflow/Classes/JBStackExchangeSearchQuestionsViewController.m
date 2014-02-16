@@ -10,6 +10,7 @@
 #import "JBStackExchangeQuestionDetailViewController.h"
 #import "JBStackExchangeQuestionSummaryCollectionViewCell.h"
 #import "JBStackExchangeLoadMoreCellsCollectionViewCell.h"
+#import "JBStackExchangeLoginViewController.h"
 #import "JBStackExchangeQuestion.h"
 
 enum
@@ -20,7 +21,7 @@ enum
 };
 
 
-NSString * const kJBStackExchangeModalLoginSegueIdentifier = @"kJBStackExchangeModalLoginSegueIdentifier";
+NSString * const kJBStackExchangeModalLoginViewControllerIdentifier = @"JBStackExchangeLoginViewController";
 NSString * const kJBStackExchangePushToQuestionDetailsSegueIdentifier = @"kJBStackExchangePushToQuestionDetailsSegueIdentifier";
 NSString * const kJBStackExchangePresentFiltersModalSegueIdentifier = @"kJBStackExchangePresentFiltersModalSegueIdentifier";
 
@@ -60,7 +61,20 @@ NSString * const kJBStackExchangePresentFiltersModalSegueIdentifier = @"kJBStack
      }
                                                                      failure:^(NSError *error)
      {
-         [self.navigationController performSegueWithIdentifier: @"kJBStackExchangeModalLoginSegueIdentifier" sender: self];
+         JBStackExchangeLoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier: kJBStackExchangeModalLoginViewControllerIdentifier];
+         loginViewController.loginHandler = ^(BOOL loginSuccess)
+         {
+             if (loginSuccess)
+             {
+                 [self loadStackExchangeQuestionsWithQuery: query];
+             }
+             else
+             {
+                 [[[UIAlertView alloc] initWithTitle: @"Login Error" message: @"Unable to complete login process." delegate: nil cancelButtonTitle: @"OK" otherButtonTitles: nil] show];
+             }
+         };
+         
+         [self.navigationController presentViewController: loginViewController animated: YES completion: nil];
          
          NSLog(@"Failed to fetch questions: %@", error);
      }];
