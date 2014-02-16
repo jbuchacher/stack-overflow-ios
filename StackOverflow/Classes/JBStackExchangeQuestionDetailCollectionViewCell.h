@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class JBStackExchangeQuestion;
+
 @interface JBStackExchangeQuestionDetailCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel *questionTitleLabel;
 @property (nonatomic, weak) IBOutlet UIWebView *questionBodyWebView;
+
++ (CGFloat)cellHeightWithQuestion:(JBStackExchangeQuestion *)question;
 
 @end

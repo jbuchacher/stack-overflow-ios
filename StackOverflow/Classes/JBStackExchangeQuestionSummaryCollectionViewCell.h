@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong) JBStackExchangeQuestion *question;
 
++ (CGFloat)cellHeightWithQuestion:(JBStackExchangeQuestion *)question;
+
 @end

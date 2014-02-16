@@ -69,6 +69,13 @@ NSString * const kJBStackExchangePresentFiltersModalSegueIdentifier = @"kJBStack
     return cell;
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    JBStackExchangeQuestion *question = self.stackExchangeQuestions[indexPath.row];
+    return CGSizeMake(290.0, [JBStackExchangeQuestionSummaryCollectionViewCell cellHeightWithQuestion: question]);;
+}
+
+
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
           viewForSupplementaryElementOfKind:(NSString *)kind
                                 atIndexPath:(NSIndexPath *)indexPath

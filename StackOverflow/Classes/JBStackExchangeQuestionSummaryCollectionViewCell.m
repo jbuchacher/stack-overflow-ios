@@ -42,4 +42,9 @@
     }
 }
 
++ (CGFloat)cellHeightWithQuestion:(JBStackExchangeQuestion *)question
+{
+    return 150.0;
+}
+
 @end

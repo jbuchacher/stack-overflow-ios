@@ -7,25 +7,13 @@
 //
 
 #import "JBStackExchangeQuestionDetailCollectionViewCell.h"
+#import "JBStackExchangeQuestion.h"
 
 @implementation JBStackExchangeQuestionDetailCollectionViewCell
 
-- (id)initWithFrame:(CGRect)frame
++ (CGFloat)cellHeightWithQuestion:(JBStackExchangeQuestion *)question
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+    return 150.0;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end
