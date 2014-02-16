@@ -9,10 +9,16 @@
 #import "JBStackExchangeItemOwner.h"
 
 NSString * const kStackExchangeResponseOwnerDisplayNameKey = @"display_name";
+NSString * const kStackExchangeResponseOwnerReputationKey = @"reputation";
+NSString * const kStackExchangeResponseItemBadgeCountsKey = @"badge_counts";
+NSString * const kStackExchangeResponseOwnerAvatarImageKey = @"profile_image";
 
 @interface JBStackExchangeItemOwner ()
 
 @property (nonatomic, strong) NSString *ownerName;
+@property (nonatomic, strong) NSString *ownerAvatarURLString;
+@property (nonatomic, strong) JBStackExchangeBadgeCount *ownerBadges;
+@property (nonatomic, assign) NSInteger ownerReputation;
 
 @end
 
@@ -23,6 +29,9 @@ NSString * const kStackExchangeResponseOwnerDisplayNameKey = @"display_name";
     if (self = [super initWithDictionary: dictionary])
     {
         _ownerName = dictionary[kStackExchangeResponseOwnerDisplayNameKey];
+        _ownerAvatarURLString = dictionary[kStackExchangeResponseOwnerAvatarImageKey];
+        _ownerReputation = [dictionary[kStackExchangeResponseOwnerReputationKey] integerValue];
+        _ownerBadges = [[JBStackExchangeBadgeCount alloc] initWithDictionary: dictionary[kStackExchangeResponseItemBadgeCountsKey]];
     }
     
     return self;

@@ -7,9 +7,15 @@
 //
 
 #import "JBStackExchangeResponseItem.h"
+#import "JBStackExchangeBadgeCount.h"
+
+extern NSString * const kStackExchangeResponseItemBadgeCountsKey;
 
 @interface JBStackExchangeItemOwner : JBStackExchangeResponseItem
 
 @property (nonatomic, strong, readonly) NSString *ownerName;
+@property (nonatomic, strong, readonly) NSString *ownerAvatarURLString;
+@property (nonatomic, strong, readonly) JBStackExchangeBadgeCount *ownerBadges;
+@property (nonatomic, assign, readonly) NSInteger ownerReputation;
 
 @end

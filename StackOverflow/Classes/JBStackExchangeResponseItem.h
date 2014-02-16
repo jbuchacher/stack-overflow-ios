@@ -6,15 +6,13 @@
 //  Copyright (c) 2014 Josh Buchacher. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "JBStackExchangeModel.h"
 
 extern NSString * const kStackExchangeResponseItemTitleKey;
 extern NSString * const kStackExchangeResponseItemOwnerKey;
 extern NSString * const kStackExchangeResponseItemBodyKey;
 extern NSString * const kStackExchangeResponseItemAnswersKey;
 
-@interface JBStackExchangeResponseItem : NSObject
-
-- (id)initWithDictionary:(NSDictionary *)dictionary;
+@interface JBStackExchangeResponseItem : JBStackExchangeModel
 
 @end

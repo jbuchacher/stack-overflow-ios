@@ -415,14 +415,14 @@
                                 </constraints>
                                 <size key="customSize" width="277" height="109"/>
                                 <connections>
+                                    <outlet property="badgeBronzeImageView" destination="5S1-5a-SMl" id="XJN-7h-lvz"/>
+                                    <outlet property="badgeBronzeLabel" destination="Tdp-U2-vpv" id="2cc-ZO-APW"/>
+                                    <outlet property="badgeGoldImageView" destination="UnL-cz-BZF" id="YTl-OE-Qcw"/>
+                                    <outlet property="badgeGoldLabel" destination="DDJ-QX-TjB" id="HdK-jT-0uf"/>
+                                    <outlet property="badgeSilverImageView" destination="SZB-iI-gJY" id="E1w-VJ-iqT"/>
+                                    <outlet property="badgeSilverLabel" destination="6Yc-uq-8u9" id="aAV-YY-sJR"/>
                                     <outlet property="ownerAvatarImageView" destination="fQE-Am-P6H" id="EYb-AQ-Xgh"/>
                                     <outlet property="ownerNameLabel" destination="Ke1-Pa-0d7" id="alx-Ib-hX3"/>
-                                    <outlet property="reputationBronzeImageView" destination="5S1-5a-SMl" id="2fv-KG-9bX"/>
-                                    <outlet property="reputationBronzeLabel" destination="Tdp-U2-vpv" id="A9l-lj-S5k"/>
-                                    <outlet property="reputationGoldImageView" destination="UnL-cz-BZF" id="FKB-fn-dxw"/>
-                                    <outlet property="reputationGoldLabel" destination="DDJ-QX-TjB" id="Rqh-p9-trS"/>
-                                    <outlet property="reputationSilverImageView" destination="SZB-iI-gJY" id="laq-lN-xza"/>
-                                    <outlet property="reputationSilverLabel" destination="6Yc-uq-8u9" id="sli-Q2-HkE"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="JBStackExchangeAnswerSummaryCollectionViewCell" id="mIH-c6-fzB" customClass="JBStackExchangeAnswerSummaryCollectionViewCell">

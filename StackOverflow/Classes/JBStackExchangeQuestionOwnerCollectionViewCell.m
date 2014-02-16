@@ -11,14 +11,14 @@
 
 @interface JBStackExchangeQuestionOwnerCollectionViewCell ()
 
-@property (nonatomic, weak) IBOutlet UILabel *reputationGoldLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *reputationGoldImageView;
+@property (nonatomic, weak) IBOutlet UILabel *badgeGoldLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *badgeGoldImageView;
 
-@property (nonatomic, weak) IBOutlet UILabel *reputationSilverLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *reputationSilverImageView;
+@property (nonatomic, weak) IBOutlet UILabel *badgeSilverLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *badgeSilverImageView;
 
-@property (nonatomic, weak) IBOutlet UILabel *reputationBronzeLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *reputationBronzeImageView;
+@property (nonatomic, weak) IBOutlet UILabel *badgeBronzeLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *badgeBronzeImageView;
 
 @property (nonatomic, weak) IBOutlet UILabel *ownerNameLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *ownerAvatarImageView;
@@ -32,7 +32,35 @@
 {
     _itemOwner = itemOwner;
     
-    _ownerNameLabel.text = itemOwner.ownerName;
+    if (itemOwner)
+    {
+        self.ownerNameLabel.text = itemOwner.ownerName;
+    }
+    else
+    {
+        self.ownerNameLabel.text = @"";
+    }
+    
+    // -updateBadgeLabel:andBadgeImageView:withBadge handles hiding the views if badges are nil.
+    [self updateBadgeLabel: self.badgeGoldLabel
+         andBadgeImageView: self.badgeGoldImageView
+                 withBadge: itemOwner.ownerBadges.goldBadges];
+    
+    [self updateBadgeLabel: self.badgeSilverLabel
+         andBadgeImageView: self.badgeSilverImageView
+                 withBadge: itemOwner.ownerBadges.silverBadges];
+    
+    [self updateBadgeLabel: self.badgeBronzeLabel
+         andBadgeImageView: self.badgeBronzeImageView
+                 withBadge: itemOwner.ownerBadges.bronzeBadges];
+}
+
+- (void)updateBadgeLabel:(UILabel *)label andBadgeImageView:(UIImageView *)imageView withBadge:(NSInteger)badge
+{
+    label.text = badge ? [NSString stringWithFormat: @"%ld", badge] : @"";
+    BOOL hideBadges = badge == 0;
+    label.hidden = hideBadges;
+    imageView.hidden = hideBadges;
 }
 
 @end

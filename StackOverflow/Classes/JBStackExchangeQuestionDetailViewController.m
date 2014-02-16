@@ -23,7 +23,12 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    NSInteger numberOfSections = self.question ? 1 : 0;
+    NSInteger numberOfSections = 0;
+    
+    if (self.question)
+    {
+        numberOfSections += 2; // One for question, one for owner.
+    }
     
     if (self.question.questionAnswers.count)
     {

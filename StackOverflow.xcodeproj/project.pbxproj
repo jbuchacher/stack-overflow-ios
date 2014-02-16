@@ -24,6 +24,10 @@
 		9670C67E18AEEE98003959E7 /* JBStackExchangeQuestionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9670C67C18AEEE98003959E7 /* JBStackExchangeQuestionDetailViewController.m */; };
 		9670C68118AEF1A5003959E7 /* JBStackExchangeQuestionDetailCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9670C68018AEF1A5003959E7 /* JBStackExchangeQuestionDetailCollectionViewCell.m */; };
 		9670C68218AEF1A5003959E7 /* JBStackExchangeQuestionDetailCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9670C68018AEF1A5003959E7 /* JBStackExchangeQuestionDetailCollectionViewCell.m */; };
+		969CDAFB18B0823500F74FE2 /* JBStackExchangeBadgeCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 969CDAFA18B0823500F74FE2 /* JBStackExchangeBadgeCount.m */; };
+		969CDAFC18B0823500F74FE2 /* JBStackExchangeBadgeCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 969CDAFA18B0823500F74FE2 /* JBStackExchangeBadgeCount.m */; };
+		969CDAFF18B0824B00F74FE2 /* JBStackExchangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 969CDAFE18B0824B00F74FE2 /* JBStackExchangeModel.m */; };
+		969CDB0018B0824B00F74FE2 /* JBStackExchangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 969CDAFE18B0824B00F74FE2 /* JBStackExchangeModel.m */; };
 		96BD456418AFF9A8008B1F60 /* JBStackExchangeLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BD456318AFF9A8008B1F60 /* JBStackExchangeLoginViewController.m */; };
 		96BD456518AFF9A8008B1F60 /* JBStackExchangeLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BD456318AFF9A8008B1F60 /* JBStackExchangeLoginViewController.m */; };
 		96BD456818B0074B008B1F60 /* JBStackExchangeQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BD456718B0074B008B1F60 /* JBStackExchangeQuery.m */; };
@@ -88,6 +92,10 @@
 		9670C67C18AEEE98003959E7 /* JBStackExchangeQuestionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBStackExchangeQuestionDetailViewController.m; path = Classes/JBStackExchangeQuestionDetailViewController.m; sourceTree = "<group>"; };
 		9670C67F18AEF1A5003959E7 /* JBStackExchangeQuestionDetailCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBStackExchangeQuestionDetailCollectionViewCell.h; path = Classes/JBStackExchangeQuestionDetailCollectionViewCell.h; sourceTree = "<group>"; };
 		9670C68018AEF1A5003959E7 /* JBStackExchangeQuestionDetailCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBStackExchangeQuestionDetailCollectionViewCell.m; path = Classes/JBStackExchangeQuestionDetailCollectionViewCell.m; sourceTree = "<group>"; };
+		969CDAF918B0823500F74FE2 /* JBStackExchangeBadgeCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBStackExchangeBadgeCount.h; path = Classes/JBStackExchangeBadgeCount.h; sourceTree = "<group>"; };
+		969CDAFA18B0823500F74FE2 /* JBStackExchangeBadgeCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBStackExchangeBadgeCount.m; path = Classes/JBStackExchangeBadgeCount.m; sourceTree = "<group>"; };
+		969CDAFD18B0824B00F74FE2 /* JBStackExchangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBStackExchangeModel.h; path = Classes/JBStackExchangeModel.h; sourceTree = "<group>"; };
+		969CDAFE18B0824B00F74FE2 /* JBStackExchangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBStackExchangeModel.m; path = Classes/JBStackExchangeModel.m; sourceTree = "<group>"; };
 		96BD456218AFF9A8008B1F60 /* JBStackExchangeLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBStackExchangeLoginViewController.h; path = Classes/JBStackExchangeLoginViewController.h; sourceTree = "<group>"; };
 		96BD456318AFF9A8008B1F60 /* JBStackExchangeLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBStackExchangeLoginViewController.m; path = Classes/JBStackExchangeLoginViewController.m; sourceTree = "<group>"; };
 		96BD456618B0074A008B1F60 /* JBStackExchangeQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBStackExchangeQuery.h; path = Classes/JBStackExchangeQuery.h; sourceTree = "<group>"; };
@@ -274,8 +282,12 @@
 			children = (
 				96D7BC2D18AF325E0085D5E0 /* JBStackExchangeAnswer.h */,
 				96D7BC2E18AF325E0085D5E0 /* JBStackExchangeAnswer.m */,
+				969CDAF918B0823500F74FE2 /* JBStackExchangeBadgeCount.h */,
+				969CDAFA18B0823500F74FE2 /* JBStackExchangeBadgeCount.m */,
 				961E6EA618B0303F00D6A9A5 /* JBStackExchangeItemOwner.h */,
 				961E6EA718B0303F00D6A9A5 /* JBStackExchangeItemOwner.m */,
+				969CDAFD18B0824B00F74FE2 /* JBStackExchangeModel.h */,
+				969CDAFE18B0824B00F74FE2 /* JBStackExchangeModel.m */,
 				96D7BC2618AC917C0085D5E0 /* JBStackExchangeQuestion.h */,
 				96D7BC2718AC917C0085D5E0 /* JBStackExchangeQuestion.m */,
 				96D7BC2218AC91260085D5E0 /* JBStackExchangeResponse.h */,
@@ -444,7 +456,9 @@
 				96D7BC2F18AF325E0085D5E0 /* JBStackExchangeAnswer.m in Sources */,
 				96D7BC2818AC917C0085D5E0 /* JBStackExchangeQuestion.m in Sources */,
 				96D7BBE918AC8E890085D5E0 /* JBAppDelegate.m in Sources */,
+				969CDAFB18B0823500F74FE2 /* JBStackExchangeBadgeCount.m in Sources */,
 				961E6EA518B0301500D6A9A5 /* JBStackExchangeQuestionOwnerCollectionViewCell.m in Sources */,
+				969CDAFF18B0824B00F74FE2 /* JBStackExchangeModel.m in Sources */,
 				96D7BC2418AC91260085D5E0 /* JBStackExchangeResponse.m in Sources */,
 				96BD456C18B0081B008B1F60 /* JBStackExchangeSearchQuery.m in Sources */,
 				9670C65818AE85FF003959E7 /* JBStackExchangeSiteItem.m in Sources */,
@@ -464,6 +478,7 @@
 				9670C68218AEF1A5003959E7 /* JBStackExchangeQuestionDetailCollectionViewCell.m in Sources */,
 				9670C65918AE85FF003959E7 /* JBStackExchangeSiteItem.m in Sources */,
 				96D7BC0718AC8E8A0085D5E0 /* StackOverflowTests.m in Sources */,
+				969CDB0018B0824B00F74FE2 /* JBStackExchangeModel.m in Sources */,
 				96D7BC2118AC90770085D5E0 /* JBStackExchangeQuestionSummaryCollectionViewCell.m in Sources */,
 				9670C65D18AE8A18003959E7 /* JBStackExchangeSitesViewController.m in Sources */,
 				96D7BC1B18AC90220085D5E0 /* JBStackExchangeSearchQuestionsViewController.m in Sources */,
@@ -476,6 +491,7 @@
 				961E6EA918B0303F00D6A9A5 /* JBStackExchangeItemOwner.m in Sources */,
 				96BD456918B0074B008B1F60 /* JBStackExchangeQuery.m in Sources */,
 				96BD456D18B0081B008B1F60 /* JBStackExchangeSearchQuery.m in Sources */,
+				969CDAFC18B0823500F74FE2 /* JBStackExchangeBadgeCount.m in Sources */,
 				96D7BC3018AF325E0085D5E0 /* JBStackExchangeAnswer.m in Sources */,
 				9670C66318AE8CC5003959E7 /* JBStackExchangeSitesCollectionViewCell.m in Sources */,
 				96D7BC1A18AC901E0085D5E0 /* JBStackExchangeAPIManager.m in Sources */,

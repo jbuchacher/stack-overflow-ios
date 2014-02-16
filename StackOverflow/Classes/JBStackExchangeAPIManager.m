@@ -46,7 +46,7 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
                                      success:(JBStackExchangeSuccessBlock)success
                                      failure:(JBStackExchangeFailureBlock)failure
 {
-    query.filter = @"!LR0Y.6RBe4l)H.4eMa.5JH";
+    query.filter = @"!0U7YRMvJ_jvvwL_roxIxgJ3NX";
     NSURL *questionsURL = [self urlFromPath: kStackExchangeSearchQuestionsPath
                                       query: query];
     

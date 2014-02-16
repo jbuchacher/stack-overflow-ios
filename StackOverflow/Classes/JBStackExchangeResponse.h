@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Josh Buchacher. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "JBStackExchangeModel.h"
 
 extern NSString * const kStackExchangeResponseItemsKey;
 
-@interface JBStackExchangeResponse : NSObject
+@interface JBStackExchangeResponse : JBStackExchangeModel
 
 /// By default, this is an array of JBStackExchangeResponseItems. Items can be parsed (and mutated) using
 /// JBStackOverflowAPIManager's 'JBStackExchangeResponseParseBlock.
@@ -33,8 +33,5 @@ extern NSString * const kStackExchangeResponseItemsKey;
 
 /// Daily quota remaining
 @property (nonatomic, assign, readonly) NSInteger quotaRemaining;
-
-// Designated Initializer
-- (id)initWithDictionary:(NSDictionary *)dictionary;
 
 @end
