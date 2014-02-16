@@ -31,8 +31,8 @@
     if (question)
     {
         self.questionTitleLabel.text = question.questionTitle;
-        self.questionVotesLabel.text = [NSString stringWithFormat: @"%ld", question.questionVotes];
-        self.questionAnswersLabel.text = [NSString stringWithFormat: @"%ld", question.questionAnswers.count];
+        self.questionVotesLabel.text = [NSString stringWithFormat: @"%d", question.questionVotes];
+        self.questionAnswersLabel.text = [NSString stringWithFormat: @"%d", question.questionAnswers.count];
     }
     else
     {

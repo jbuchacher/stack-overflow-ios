@@ -57,7 +57,7 @@
 
 - (void)updateBadgeLabel:(UILabel *)label andBadgeImageView:(UIImageView *)imageView withBadge:(NSInteger)badge
 {
-    label.text = badge ? [NSString stringWithFormat: @"%ld", badge] : @"";
+    label.text = badge ? [NSString stringWithFormat: @"%d", badge] : @"";
     BOOL hideBadges = badge == 0;
     label.hidden = hideBadges;
     imageView.hidden = hideBadges;

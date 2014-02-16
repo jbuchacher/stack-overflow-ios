@@ -13,6 +13,7 @@
 
 NSString * const kJBStackExchangeModalLoginSegueIdentifier = @"kJBStackExchangeModalLoginSegueIdentifier";
 NSString * const kJBStackExchangePushToQuestionDetailsSegueIdentifier = @"kJBStackExchangePushToQuestionDetailsSegueIdentifier";
+NSString * const kJBStackExchangePresentFiltersModalSegueIdentifier = @"kJBStackExchangePresentFiltersModalSegueIdentifier";
 
 @interface JBStackExchangeSearchQuestionsViewController () <UISearchBarDelegate>
 
@@ -99,6 +100,10 @@ NSString * const kJBStackExchangePushToQuestionDetailsSegueIdentifier = @"kJBSta
         
         JBStackExchangeQuestionDetailViewController *detailViewController = [segue destinationViewController];
         detailViewController.question = question;
+    }
+    else if ([segue.identifier isEqualToString: kJBStackExchangePresentFiltersModalSegueIdentifier])
+    {
+        
     }
 }
 
