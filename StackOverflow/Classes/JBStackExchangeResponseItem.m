@@ -8,9 +8,14 @@
 
 #import "JBStackExchangeResponseItem.h"
 
-NSString * const kStackExchangeResponseItemBodyKey = @"body";
 NSString * const kStackExchangeResponseItemTitleKey = @"title";
+NSString * const kStackExchangeResponseItemOwnerKey = @"owner";
+NSString * const kStackExchangeResponseItemBodyKey = @"body";
 NSString * const kStackExchangeResponseItemAnswersKey = @"answers";
+
+@interface JBStackExchangeResponseItem ()
+
+@end
 
 @implementation JBStackExchangeResponseItem
 

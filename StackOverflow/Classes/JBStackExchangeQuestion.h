@@ -7,11 +7,14 @@
 //
 
 #import "JBStackExchangeResponseItem.h"
+#import "JBStackExchangeItemOwner.h"
 
 @interface JBStackExchangeQuestion : JBStackExchangeResponseItem
 
 @property (nonatomic, strong, readonly) NSString *questionTitle;
+@property (nonatomic, strong, readonly) JBStackExchangeItemOwner *questionOwner;
 @property (nonatomic, strong, readonly) NSString *questionBodyHTML;
 @property (nonatomic, strong, readonly) NSArray *questionAnswers;
+@property (nonatomic, assign, readonly) NSInteger questionVotes;
 
 @end

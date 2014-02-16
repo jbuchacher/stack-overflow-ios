@@ -9,11 +9,15 @@
 #import "JBStackExchangeQuestion.h"
 #import "JBStackExchangeAnswer.h"
 
+NSString * const kStackExchangeResponseItemScoreKey = @"score";
+
 @interface JBStackExchangeQuestion ()
 
 @property (nonatomic, strong) NSString *questionTitle;
+@property (nonatomic, strong) JBStackExchangeItemOwner *questionOwner;
 @property (nonatomic, strong) NSString *questionBodyHTML;
 @property (nonatomic, strong) NSArray *questionAnswers;
+@property (nonatomic, assign) NSInteger questionVotes;
 
 @end
 
@@ -70,6 +74,10 @@
         }
         
         _questionAnswers = answers;
+        
+        _questionVotes = [dictionary[kStackExchangeResponseItemScoreKey] integerValue];
+        
+        _questionOwner = [[JBStackExchangeItemOwner alloc] initWithDictionary: dictionary[kStackExchangeResponseItemOwnerKey]];
     }
     
     return self;

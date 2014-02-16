@@ -7,25 +7,39 @@
 //
 
 #import "JBStackExchangeQuestionSummaryCollectionViewCell.h"
+#import "JBStackExchangeQuestion.h"
+
+@interface JBStackExchangeQuestionSummaryCollectionViewCell ()
+
+@property (nonatomic, weak) IBOutlet UILabel *questionTitleLabel;
+@property (nonatomic, weak) IBOutlet UILabel *questionVotesLabel;
+@property (nonatomic, weak) IBOutlet UILabel *questionAnswersLabel;
+
+@end
 
 @implementation JBStackExchangeQuestionSummaryCollectionViewCell
 
-- (id)initWithFrame:(CGRect)frame
+- (void)prepareForReuse
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+    self.question = nil;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)setQuestion:(JBStackExchangeQuestion *)question
 {
-    // Drawing code
+    _question = question;
+    
+    if (question)
+    {
+        self.questionTitleLabel.text = question.questionTitle;
+        self.questionVotesLabel.text = [NSString stringWithFormat: @"%d", question.questionVotes];
+        self.questionAnswersLabel.text = [NSString stringWithFormat: @"%d", question.questionAnswers.count];
+    }
+    else
+    {
+        self.questionTitleLabel.text = @"";
+        self.questionVotesLabel.text = @"";
+        self.questionAnswersLabel.text = @"";
+    }
 }
-*/
 
 @end

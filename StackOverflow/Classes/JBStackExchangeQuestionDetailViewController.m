@@ -8,6 +8,7 @@
 
 #import "JBStackExchangeQuestionDetailViewController.h"
 #import "JBStackExchangeQuestionDetailCollectionViewCell.h"
+#import "JBStackExchangeQuestionOwnerCollectionViewCell.h"
 #import "JBStackExchangeAnswerSummaryCollectionViewCell.h"
 #import "JBStackExchangeQuestion.h"
 #import "JBStackExchangeAnswer.h"
@@ -43,6 +44,11 @@
             break;
         case 1:
         {
+            return 1;
+        }
+            break;
+        case 2:
+        {
             return self.question.questionAnswers.count;
         }
             break;
@@ -76,6 +82,15 @@
             break;
         }
         case 1:
+        {
+            JBStackExchangeQuestionOwnerCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier: @"JBStackExchangeQuestionOwnerCollectionViewCell"
+                                                                                                             forIndexPath: indexPath];
+            cell.itemOwner = self.question.questionOwner;
+            
+            return cell;
+        }
+            break;
+        case 2:
         {
             JBStackExchangeAnswerSummaryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier: @"JBStackExchangeAnswerSummaryCollectionViewCell"
                                                                                                               forIndexPath: indexPath];

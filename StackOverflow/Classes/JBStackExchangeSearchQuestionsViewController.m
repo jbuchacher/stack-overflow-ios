@@ -63,9 +63,7 @@ NSString * const kJBStackExchangePushToQuestionDetailsSegueIdentifier = @"kJBSta
     JBStackExchangeQuestionSummaryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier: @"JBStackExchangeQuestionSummaryCollectionViewCell"
                                                                                              forIndexPath: indexPath];
     
-    JBStackExchangeQuestion *question = self.stackExchangeQuestions[indexPath.row];
-
-    cell.questionTitleLabel.text = question.questionTitle;
+    cell.question = self.stackExchangeQuestions[indexPath.row];
     
     return cell;
 }
