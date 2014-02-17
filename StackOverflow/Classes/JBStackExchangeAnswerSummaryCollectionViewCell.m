@@ -41,4 +41,15 @@
     }
 }
 
++ (CGSize)cellSizeWithAnswer:(JBStackExchangeAnswerItem *)answer
+                      isIpad:(BOOL)isIpad
+{
+    if (isIpad)
+    {
+        return CGSizeMake(600, 200);
+    }
+    
+    return CGSizeMake(280, 400);
+}
+
 @end

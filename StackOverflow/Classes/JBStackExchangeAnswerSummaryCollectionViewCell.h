@@ -14,4 +14,7 @@
 
 @property (nonatomic, weak) JBStackExchangeAnswerItem *answer;
 
++ (CGSize)cellSizeWithAnswer:(JBStackExchangeAnswerItem *)answer
+                      isIpad:(BOOL)isIpad;
+
 @end

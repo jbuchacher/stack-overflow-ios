@@ -131,17 +131,26 @@ enum
     {
         case JBStackExchangeQuestionDetailsSectionQuestion:
         {
-            return CGSizeMake(300, 400);
+            JBStackExchangeQuestionItem *question = self.question;
+            
+            return [JBStackExchangeQuestionDetailCollectionViewCell cellSizeWithQuestion: question
+                                                                                  isIpad: (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)];
         }
             break;
         case JBStackExchangeQuestionDetailsSectionOwner:
         {
-            return CGSizeMake(300, 100);
+            JBStackExchangeItemOwner *owner = self.question.questionOwner;
+            
+            return [JBStackExchangeQuestionOwnerCollectionViewCell cellSizeWithItemOwner: owner
+                                                                                  isIpad: (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)];
         }
             break;
         case JBStackExchangeQuestionDetailsSectionAnswers:
         {
-            return CGSizeMake(300, 400);
+            JBStackExchangeAnswerItem *answer = self.question.questionAnswers[indexPath.row];
+            
+            return [JBStackExchangeAnswerSummaryCollectionViewCell cellSizeWithAnswer: answer
+                                                                               isIpad: (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)];
         }
             break;
     }

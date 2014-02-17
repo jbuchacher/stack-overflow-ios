@@ -16,4 +16,7 @@
 
 @property (nonatomic, strong) JBStackExchangeItemOwner *itemOwner;
 
++ (CGSize)cellSizeWithItemOwner:(JBStackExchangeItemOwner *)owner
+                         isIpad:(BOOL)isIpad;
+
 @end

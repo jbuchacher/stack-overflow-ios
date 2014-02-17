@@ -9,6 +9,9 @@
 #import "JBStackExchangeQuestionSummaryCollectionViewCell.h"
 #import "JBStackExchangeQuestionItem.h"
 
+CGFloat const kQuestionSummaryCellWidth = 300;
+CGFloat const kQuestionSummaryCellWidthIpad = 354;
+
 @interface JBStackExchangeQuestionSummaryCollectionViewCell ()
 
 @property (nonatomic, weak) IBOutlet UILabel *questionTitleLabel;
@@ -42,9 +45,15 @@
     }
 }
 
-+ (CGFloat)cellHeightWithQuestion:(JBStackExchangeQuestionItem *)question
++ (CGSize)cellSizeWithQuestion:(JBStackExchangeQuestionItem *)question
+                        isIpad:(BOOL)isIpad
 {
-    return 150.0;
+    if (isIpad)
+    {
+        return CGSizeMake(kQuestionSummaryCellWidthIpad, 200);
+    }
+    
+    return CGSizeMake(kQuestionSummaryCellWidth, 130);
 }
 
 @end

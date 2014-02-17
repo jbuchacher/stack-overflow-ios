@@ -70,4 +70,15 @@
     imageView.hidden = hideBadges;
 }
 
++ (CGSize)cellSizeWithItemOwner:(JBStackExchangeItemOwner *)owner
+                         isIpad:(BOOL)isIpad
+{
+    if (isIpad)
+    {
+        return CGSizeMake(700, 110);
+    }
+    
+    return CGSizeMake(300, 110);
+}
+
 @end

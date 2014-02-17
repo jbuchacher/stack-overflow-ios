@@ -199,8 +199,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="350" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="How do you make an app in iOS on a PC?" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="310" translatesAutoresizingMaskIntoConstraints="NO" id="rRg-Ks-qsi" userLabel="Question Title Label">
-                                            <rect key="frame" x="20" y="20" width="310" height="34"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How do you make an app in iOS on a PC?" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="310" translatesAutoresizingMaskIntoConstraints="NO" id="rRg-Ks-qsi" userLabel="Question Title Label">
+                                            <rect key="frame" x="20" y="20" width="310" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="highlightedColor"/>
@@ -376,16 +376,16 @@
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="anr-Sn-6Ze">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93064283290000005" green="0.93064283290000005" blue="0.93064283290000005" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Rvq-ig-0uT">
                             <size key="itemSize" width="702" height="605"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="JBStackExchangeQuestionDetailCollectionViewCell" id="Ghy-S4-AZB" customClass="JBStackExchangeQuestionDetailCollectionViewCell">
-                                <rect key="frame" x="20" y="64" width="728" height="150"/>
+                                <rect key="frame" x="20" y="84" width="728" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="728" height="150"/>
@@ -424,14 +424,14 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="JBStackExchangeQuestionOwnerCollectionViewCell" id="l5o-1z-eGK" customClass="JBStackExchangeQuestionOwnerCollectionViewCell">
-                                <rect key="frame" x="20" y="224" width="728" height="109"/>
+                                <rect key="frame" x="20" y="244" width="728" height="110"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="728" height="109"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="728" height="110"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="notjbuchacher" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jM-Aa-W1e" userLabel="Username Label">
-                                            <rect key="frame" x="445" y="27" width="105" height="15"/>
+                                            <rect key="frame" x="445" y="28" width="105" height="15"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="105" id="W83-ki-9eH"/>
@@ -440,35 +440,35 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="70" placeholderIntrinsicHeight="70" translatesAutoresizingMaskIntoConstraints="NO" id="eb7-2Y-cgn" userLabel="Avatar Image">
-                                            <rect key="frame" x="561" y="20" width="70" height="70"/>
+                                            <rect key="frame" x="561" y="21" width="70" height="70"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="badge-dot-gold" translatesAutoresizingMaskIntoConstraints="NO" id="E0v-aU-IBv" userLabel="Gold Badge Image">
-                                            <rect key="frame" x="455" y="69" width="20" height="20"/>
+                                            <rect key="frame" x="455" y="70" width="20" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="98995" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzp-tk-Exo" userLabel="Gold Badge Count Label">
-                                            <rect key="frame" x="450" y="49" width="29" height="12"/>
+                                            <rect key="frame" x="450" y="50" width="29" height="12"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="badge-dot-silver" translatesAutoresizingMaskIntoConstraints="NO" id="4ge-8S-1sJ" userLabel="Silver Badge Image">
-                                            <rect key="frame" x="491" y="69" width="20" height="20"/>
+                                            <rect key="frame" x="491" y="70" width="20" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="98995" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hr-1a-dUV" userLabel="Silver Badge Count Label">
-                                            <rect key="frame" x="487" y="49" width="29" height="12"/>
+                                            <rect key="frame" x="487" y="50" width="29" height="12"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="badge-dot-bronze" translatesAutoresizingMaskIntoConstraints="NO" id="79v-Ov-vyp" userLabel="Bronze Badge Image">
-                                            <rect key="frame" x="530" y="69" width="20" height="20"/>
+                                            <rect key="frame" x="530" y="70" width="20" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="98995" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ka6-Mr-gig" userLabel="Bronze Badge Count Label">
-                                            <rect key="frame" x="525" y="50" width="29" height="10"/>
+                                            <rect key="frame" x="525" y="51" width="29" height="10"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="10" id="hN3-BW-UzZ"/>
@@ -477,7 +477,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vk4-cc-fkk" userLabel="Reputation View">
-                                            <rect key="frame" x="638" y="20" width="70" height="70"/>
+                                            <rect key="frame" x="638" y="21" width="70" height="70"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REPUTATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4LI-it-xSC" userLabel="Reputation Label">
@@ -519,7 +519,9 @@
                                     <constraint firstItem="8jM-Aa-W1e" firstAttribute="trailing" secondItem="79v-Ov-vyp" secondAttribute="trailing" id="CEc-aa-N9i"/>
                                     <constraint firstAttribute="trailing" secondItem="Vk4-cc-fkk" secondAttribute="trailing" constant="20" id="CJj-qO-7m0"/>
                                     <constraint firstItem="4ge-8S-1sJ" firstAttribute="centerX" secondItem="6hr-1a-dUV" secondAttribute="centerX" id="D49-rl-h5H"/>
+                                    <constraint firstAttribute="bottom" secondItem="eb7-2Y-cgn" secondAttribute="bottom" constant="19" id="ESC-5a-5bz"/>
                                     <constraint firstItem="Ka6-Mr-gig" firstAttribute="top" secondItem="8jM-Aa-W1e" secondAttribute="bottom" constant="8" id="Hse-gL-K9h"/>
+                                    <constraint firstItem="eb7-2Y-cgn" firstAttribute="top" secondItem="l5o-1z-eGK" secondAttribute="top" constant="21" id="LiN-xB-6vH"/>
                                     <constraint firstItem="4ge-8S-1sJ" firstAttribute="leading" secondItem="E0v-aU-IBv" secondAttribute="trailing" constant="16" id="LlI-h1-3aC"/>
                                     <constraint firstItem="79v-Ov-vyp" firstAttribute="leading" secondItem="4ge-8S-1sJ" secondAttribute="trailing" constant="19" id="RGl-rw-Omw"/>
                                     <constraint firstItem="6hr-1a-dUV" firstAttribute="centerY" secondItem="jzp-tk-Exo" secondAttribute="centerY" id="RtL-A2-cnk"/>
@@ -527,13 +529,12 @@
                                     <constraint firstItem="4ge-8S-1sJ" firstAttribute="centerY" secondItem="E0v-aU-IBv" secondAttribute="centerY" id="fmT-f4-iSU"/>
                                     <constraint firstItem="Vk4-cc-fkk" firstAttribute="leading" secondItem="eb7-2Y-cgn" secondAttribute="trailing" constant="7" id="gdm-AS-0sC"/>
                                     <constraint firstAttribute="bottom" secondItem="79v-Ov-vyp" secondAttribute="bottom" constant="20" id="gl0-dh-aXD"/>
-                                    <constraint firstItem="Vk4-cc-fkk" firstAttribute="bottom" secondItem="eb7-2Y-cgn" secondAttribute="bottom" id="hTZ-uC-3Kp"/>
                                     <constraint firstItem="Ka6-Mr-gig" firstAttribute="centerX" secondItem="79v-Ov-vyp" secondAttribute="centerX" constant="-0.5" id="i7H-nt-NBy"/>
                                     <constraint firstItem="eb7-2Y-cgn" firstAttribute="leading" secondItem="8jM-Aa-W1e" secondAttribute="trailing" constant="11" id="m4j-i9-Dhp"/>
                                     <constraint firstItem="Ka6-Mr-gig" firstAttribute="centerY" secondItem="6hr-1a-dUV" secondAttribute="centerY" constant="0.5" id="xJ3-i7-OVH"/>
                                     <constraint firstItem="4ge-8S-1sJ" firstAttribute="centerY" secondItem="79v-Ov-vyp" secondAttribute="centerY" id="zYI-4j-SIe"/>
                                 </constraints>
-                                <size key="customSize" width="728" height="109"/>
+                                <size key="customSize" width="728" height="110"/>
                                 <connections>
                                     <outlet property="badgeBronzeImageView" destination="79v-Ov-vyp" id="1cn-ia-INm"/>
                                     <outlet property="badgeBronzeLabel" destination="Ka6-Mr-gig" id="S0W-0C-G0z"/>
@@ -547,7 +548,7 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="JBStackExchangeAnswerSummaryCollectionViewCell" id="EPJ-uh-qrG" customClass="JBStackExchangeAnswerSummaryCollectionViewCell">
-                                <rect key="frame" x="20" y="343" width="728" height="156"/>
+                                <rect key="frame" x="20" y="364" width="728" height="156"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="728" height="156"/>

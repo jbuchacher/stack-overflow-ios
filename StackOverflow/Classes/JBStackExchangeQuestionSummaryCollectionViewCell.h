@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) JBStackExchangeQuestionItem *question;
 
-+ (CGFloat)cellHeightWithQuestion:(JBStackExchangeQuestionItem *)question;
++ (CGSize)cellSizeWithQuestion:(JBStackExchangeQuestionItem *)question
+                        isIpad:(BOOL)isIpad;
 
 @end

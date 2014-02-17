@@ -144,7 +144,10 @@ NSString * const kJBStackExchangePresentFiltersModalSegueIdentifier = @"kJBStack
     {
         case JBStackExchangeQuestionSummaryQuestionSection:
         {
-            return CGSizeMake(300, 200);
+            JBStackExchangeQuestionItem *question = self.stackExchangeQuestions[indexPath.row];
+
+            return [JBStackExchangeQuestionSummaryCollectionViewCell cellSizeWithQuestion: question
+                                                                                   isIpad: (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)];
         }
             break;
         case JBStackExchangeQuestionSummaryLoadMoreQuestionsSection:

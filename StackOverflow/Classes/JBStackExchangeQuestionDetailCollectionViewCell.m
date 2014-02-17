@@ -39,9 +39,15 @@
     }
 }
 
-+ (CGFloat)cellHeightWithQuestion:(JBStackExchangeQuestionItem *)question
++ (CGSize)cellSizeWithQuestion:(JBStackExchangeQuestionItem *)question
+                        isIpad:(BOOL)isIpad
 {
-    return 150.0;
+    if (isIpad)
+    {
+        return CGSizeMake(728, 600);
+    }
+    
+    return CGSizeMake(300, 400);
 }
 
 @end
