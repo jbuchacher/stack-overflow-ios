@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class JBStackExchangeQuestion;
+@class JBStackExchangeQuestionItem;
 
 @interface JBStackExchangeQuestionSummaryCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) JBStackExchangeQuestion *question;
+@property (nonatomic, strong) JBStackExchangeQuestionItem *question;
 
-+ (CGFloat)cellHeightWithQuestion:(JBStackExchangeQuestion *)question;
++ (CGFloat)cellHeightWithQuestion:(JBStackExchangeQuestionItem *)question;
 
 @end

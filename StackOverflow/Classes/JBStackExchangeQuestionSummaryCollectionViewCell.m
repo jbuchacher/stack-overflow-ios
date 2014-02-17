@@ -7,7 +7,7 @@
 //
 
 #import "JBStackExchangeQuestionSummaryCollectionViewCell.h"
-#import "JBStackExchangeQuestion.h"
+#import "JBStackExchangeQuestionItem.h"
 
 @interface JBStackExchangeQuestionSummaryCollectionViewCell ()
 
@@ -24,13 +24,13 @@
     self.question = nil;
 }
 
-- (void)setQuestion:(JBStackExchangeQuestion *)question
+- (void)setQuestion:(JBStackExchangeQuestionItem *)question
 {
     _question = question;
     
     if (question)
     {
-        self.questionTitleLabel.text = question.questionTitle;
+        self.questionTitleLabel.attributedText = question.questionTitle;
         self.questionVotesLabel.text = [NSString stringWithFormat: @"%d", question.questionVotes];
         self.questionAnswersLabel.text = [NSString stringWithFormat: @"%d", question.questionAnswers.count];
     }
@@ -42,7 +42,7 @@
     }
 }
 
-+ (CGFloat)cellHeightWithQuestion:(JBStackExchangeQuestion *)question
++ (CGFloat)cellHeightWithQuestion:(JBStackExchangeQuestionItem *)question
 {
     return 150.0;
 }

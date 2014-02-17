@@ -10,7 +10,7 @@
 
 // Models
 #import "JBStackExchangeSiteItem.h"
-#import "JBStackExchangeQuestion.h"
+#import "JBStackExchangeQuestionItem.h"
 
 // Errors
 NSString * const JBStackExchangeAPIManagerErrorDomain = @"JBStackExchangeAPIManagerErrorDomain";
@@ -52,7 +52,7 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
     
     JBStackExchangeResponseParseItemsBlock parseBlock = ^(NSDictionary *responseJSON)
     {
-        JBStackExchangeQuestion *responseItem = [[JBStackExchangeQuestion alloc] initWithDictionary: responseJSON];
+        JBStackExchangeQuestionItem *responseItem = [[JBStackExchangeQuestionItem alloc] initWithDictionary: responseJSON];
         return responseItem;
     };
     

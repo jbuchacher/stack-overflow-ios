@@ -12,6 +12,8 @@
 
 @interface JBStackExchangeQuestionOwnerCollectionViewCell : UICollectionViewCell
 
+@property (nonatomic, weak) IBOutlet UIImageView *ownerAvatarImageView;
+
 @property (nonatomic, strong) JBStackExchangeItemOwner *itemOwner;
 
 @end

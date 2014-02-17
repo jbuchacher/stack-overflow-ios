@@ -21,12 +21,17 @@
 @property (nonatomic, weak) IBOutlet UIImageView *badgeBronzeImageView;
 
 @property (nonatomic, weak) IBOutlet UILabel *ownerNameLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *ownerAvatarImageView;
+
+@property (nonatomic, weak) IBOutlet UILabel *ownerReputationLabel;
 
 @end
 
 @implementation JBStackExchangeQuestionOwnerCollectionViewCell
 
+- (void)prepareForReuse
+{
+    self.itemOwner = nil;
+}
 
 - (void)setItemOwner:(JBStackExchangeItemOwner *)itemOwner
 {
@@ -35,10 +40,12 @@
     if (itemOwner)
     {
         self.ownerNameLabel.text = itemOwner.ownerName;
+        self.ownerReputationLabel.text = [NSString stringWithFormat: @"%d", itemOwner.ownerReputation];
     }
     else
     {
         self.ownerNameLabel.text = @"";
+        self.ownerReputationLabel.text = @"0";
     }
     
     // -updateBadgeLabel:andBadgeImageView:withBadge handles hiding the views if badges are nil.

@@ -10,8 +10,8 @@
 #import "JBStackExchangeQuestionDetailCollectionViewCell.h"
 #import "JBStackExchangeQuestionOwnerCollectionViewCell.h"
 #import "JBStackExchangeAnswerSummaryCollectionViewCell.h"
-#import "JBStackExchangeQuestion.h"
-#import "JBStackExchangeAnswer.h"
+#import "JBStackExchangeQuestionItem.h"
+#import "JBStackExchangeAnswerItem.h"
 
 enum
 {
@@ -82,9 +82,7 @@ enum
                 {
                     JBStackExchangeQuestionDetailCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier: @"JBStackExchangeQuestionDetailCollectionViewCell"
                                                                                                                       forIndexPath: indexPath];
-                    cell.questionTitleLabel.text = self.question.questionTitle;
-                    [cell.questionBodyWebView loadHTMLString: self.question.questionBodyHTML
-                                                     baseURL: nil];
+                    cell.question = self.question;
                     
                     return cell;
                 }
@@ -99,6 +97,16 @@ enum
             JBStackExchangeQuestionOwnerCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier: @"JBStackExchangeQuestionOwnerCollectionViewCell"
                                                                                                              forIndexPath: indexPath];
             cell.itemOwner = self.question.questionOwner;
+            
+            [[JBStackExchangeAPIManager shared] fetchImageWithURLString: self.question.questionOwner.ownerAvatarURLString
+                                                                success: ^(UIImage *image)
+             {
+                 cell.ownerAvatarImageView.image = image;
+             }
+                                                                failure: ^(NSError *error)
+             {
+                 NSLog(@"Failed to fetch site logo: %@", error);
+             }];
             
             return cell;
         }

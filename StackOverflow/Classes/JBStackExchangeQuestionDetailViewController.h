@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class JBStackExchangeQuestion;
+@class JBStackExchangeQuestionItem;
 
 @interface JBStackExchangeQuestionDetailViewController : UICollectionViewController
 
-@property (nonatomic, weak) JBStackExchangeQuestion *question;
+@property (nonatomic, weak) JBStackExchangeQuestionItem *question;
 
 @end

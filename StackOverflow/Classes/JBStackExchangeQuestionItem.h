@@ -9,12 +9,13 @@
 #import "JBStackExchangeResponseItem.h"
 #import "JBStackExchangeItemOwner.h"
 
-@interface JBStackExchangeQuestion : JBStackExchangeResponseItem
+@interface JBStackExchangeQuestionItem : JBStackExchangeResponseItem
 
-@property (nonatomic, strong, readonly) NSString *questionTitle;
 @property (nonatomic, strong, readonly) JBStackExchangeItemOwner *questionOwner;
-@property (nonatomic, strong, readonly) NSString *questionBodyHTML;
+@property (nonatomic, strong, readonly) NSAttributedString *questionTitle;
+@property (nonatomic, strong, readonly) NSAttributedString *questionBody;
 @property (nonatomic, strong, readonly) NSArray *questionAnswers;
 @property (nonatomic, assign, readonly) NSInteger questionVotes;
+@property (nonatomic, assign, readonly) BOOL isAnswered;
 
 @end

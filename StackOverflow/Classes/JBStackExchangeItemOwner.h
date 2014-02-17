@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 Josh Buchacher. All rights reserved.
 //
 
-#import "JBStackExchangeResponseItem.h"
+#import "JBStackExchangeModel.h"
 #import "JBStackExchangeBadgeCount.h"
 
 extern NSString * const kStackExchangeResponseItemBadgeCountsKey;
 
-@interface JBStackExchangeItemOwner : JBStackExchangeResponseItem
+@interface JBStackExchangeItemOwner : JBStackExchangeModel
 
 @property (nonatomic, strong, readonly) NSString *ownerName;
 @property (nonatomic, strong, readonly) NSString *ownerAvatarURLString;

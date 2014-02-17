@@ -11,7 +11,7 @@
 #import "JBStackExchangeQuestionSummaryCollectionViewCell.h"
 #import "JBStackExchangeLoadMoreCellsCollectionViewCell.h"
 #import "JBStackExchangeLoginViewController.h"
-#import "JBStackExchangeQuestion.h"
+#import "JBStackExchangeQuestionItem.h"
 
 enum
 {
@@ -196,12 +196,6 @@ NSString * const kJBStackExchangePresentFiltersModalSegueIdentifier = @"kJBStack
 {
     switch (indexPath.section)
     {
-        case JBStackExchangeQuestionSummaryQuestionSection:
-        {
-            [self performSegueWithIdentifier: kJBStackExchangePushToQuestionDetailsSegueIdentifier
-                                      sender: self];
-        }
-            break;
         case JBStackExchangeQuestionSummaryLoadMoreQuestionsSection:
         {
             self.searchQuery.pageNumber += 1;
@@ -227,7 +221,7 @@ NSString * const kJBStackExchangePresentFiltersModalSegueIdentifier = @"kJBStack
     if ([segue.identifier isEqualToString: kJBStackExchangePushToQuestionDetailsSegueIdentifier])
     {
         NSIndexPath *indexPathOfSelectedCell = [self.collectionView indexPathForCell: sender];
-        JBStackExchangeQuestion *question = self.stackExchangeQuestions[indexPathOfSelectedCell.row];
+        JBStackExchangeQuestionItem *question = self.stackExchangeQuestions[indexPathOfSelectedCell.row];
         
         JBStackExchangeQuestionDetailViewController *detailViewController = [segue destinationViewController];
         detailViewController.question = question;

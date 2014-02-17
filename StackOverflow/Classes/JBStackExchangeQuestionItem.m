@@ -6,22 +6,25 @@
 //  Copyright (c) 2014 Josh Buchacher. All rights reserved.
 //
 
-#import "JBStackExchangeQuestion.h"
-#import "JBStackExchangeAnswer.h"
+#import "JBStackExchangeQuestionItem.h"
+#import "JBStackExchangeAnswerItem.h"
+#import "NSAttributedString+JBStackExchangeExtensions.h"
 
-NSString * const kStackExchangeResponseItemScoreKey = @"score";
+NSString * const kStackExchangeQuestionScoreKey = @"score";
+NSString * const kStackExchangeQuestionIsAnsweredKey = @"is_answered";
 
-@interface JBStackExchangeQuestion ()
+@interface JBStackExchangeQuestionItem ()
 
-@property (nonatomic, strong) NSString *questionTitle;
 @property (nonatomic, strong) JBStackExchangeItemOwner *questionOwner;
-@property (nonatomic, strong) NSString *questionBodyHTML;
+@property (nonatomic, strong) NSAttributedString *questionTitle;
+@property (nonatomic, strong) NSAttributedString *questionBody;
 @property (nonatomic, strong) NSArray *questionAnswers;
 @property (nonatomic, assign) NSInteger questionVotes;
+@property (nonatomic, assign) BOOL isAnswered;
 
 @end
 
-@implementation JBStackExchangeQuestion
+@implementation JBStackExchangeQuestionItem
 
 - (id)initWithDictionary:(NSDictionary *)dictionary
 {
@@ -62,22 +65,24 @@ NSString * const kStackExchangeResponseItemScoreKey = @"score";
          
          */
         
-        _questionTitle = dictionary[kStackExchangeResponseItemTitleKey];
-        _questionBodyHTML = dictionary[kStackExchangeResponseItemBodyKey];
+        _questionOwner = [[JBStackExchangeItemOwner alloc] initWithDictionary: dictionary[kStackExchangeResponseItemOwnerKey]];
+        
+        _questionTitle = [NSAttributedString attributedStringFromHTML: dictionary[kStackExchangeResponseItemTitleKey]];
+        _questionBody = [NSAttributedString attributedStringFromHTML: dictionary[kStackExchangeResponseItemBodyKey]];
         
         NSDictionary *answersJSON = dictionary[kStackExchangeResponseItemAnswersKey];
         NSMutableArray *answers = [NSMutableArray arrayWithCapacity: answersJSON.count];
         for (NSDictionary *answerJSON in answersJSON)
         {
-            JBStackExchangeAnswer *answer = [[JBStackExchangeAnswer alloc] initWithDictionary: answerJSON];
+            JBStackExchangeAnswerItem *answer = [[JBStackExchangeAnswerItem alloc] initWithDictionary: answerJSON];
             [answers addObject: answer];
         }
         
         _questionAnswers = answers;
         
-        _questionVotes = [dictionary[kStackExchangeResponseItemScoreKey] integerValue];
+        _questionVotes = [dictionary[kStackExchangeQuestionScoreKey] integerValue];
         
-        _questionOwner = [[JBStackExchangeItemOwner alloc] initWithDictionary: dictionary[kStackExchangeResponseItemOwnerKey]];
+        _isAnswered = [dictionary[kStackExchangeQuestionIsAnsweredKey] boolValue];
     }
     
     return self;

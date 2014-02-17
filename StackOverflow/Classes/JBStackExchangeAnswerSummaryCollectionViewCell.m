@@ -7,11 +7,14 @@
 //
 
 #import "JBStackExchangeAnswerSummaryCollectionViewCell.h"
-#import "JBStackExchangeAnswer.h"
+#import "JBStackExchangeAnswerItem.h"
 
 @interface JBStackExchangeAnswerSummaryCollectionViewCell ()
 
-@property (nonatomic, weak) IBOutlet UIWebView *answerBodyWebView;
+@property (nonatomic, weak) IBOutlet UILabel *answerBodyLabel;
+@property (nonatomic, weak) IBOutlet UILabel *answerOwnerNameLabel;
+
+@property (nonatomic, weak) IBOutlet UIImageView *answerAcceptedImageView;
 
 @end
 
@@ -19,15 +22,23 @@
 
 - (void)prepareForReuse
 {
-    [self.answerBodyWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+    self.answer = nil;
 }
 
-- (void)setAnswer:(JBStackExchangeAnswer *)answer
+- (void)setAnswer:(JBStackExchangeAnswerItem *)answer
 {
     _answer = answer;
     
-    [self.answerBodyWebView loadHTMLString: answer.answerBodyHTML
-                                   baseURL: nil];
+    if (answer)
+    {
+        self.answerBodyLabel.attributedText = answer.answerBody;
+        self.answerOwnerNameLabel.text = answer.answerOwner.ownerName;
+    }
+    else
+    {
+        self.answerBodyLabel.text = @"";
+        self.answerOwnerNameLabel.text = @"";
+    }
 }
 
 @end
