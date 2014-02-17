@@ -71,7 +71,7 @@ CGFloat const kAnswerSummaryCellVerticalPaddingTotal = 40;
                                                              options: NSStringDrawingUsesLineFragmentOrigin
                                                              context: NULL].size.height;
         
-        cellSize = CGSizeMake(kAnswerSummaryCellWidthIpad, answerBodyHeightIpad + kAnswerSummaryCellOwnerInfoHeight);
+        cellSize = CGSizeMake(kAnswerSummaryCellWidthIpad, answerBodyHeightIpad + kAnswerSummaryCellOwnerInfoHeight + kAnswerSummaryCellVerticalPaddingTotal);
     }
     else
     {
@@ -80,7 +80,7 @@ CGFloat const kAnswerSummaryCellVerticalPaddingTotal = 40;
                                                             options: NSStringDrawingUsesLineFragmentOrigin
                                                             context: NULL].size.height;
         
-        cellSize = CGSizeMake(kAnswerSummaryCellWidth, answerBodyHeight + kAnswerSummaryCellOwnerInfoHeight);
+        cellSize = CGSizeMake(kAnswerSummaryCellWidth, answerBodyHeight + kAnswerSummaryCellOwnerInfoHeight + kAnswerSummaryCellVerticalPaddingTotal);
     }
     
     return cellSize;

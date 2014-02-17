@@ -10,8 +10,13 @@
 #import "JBStackExchangeQuestionItem.h"
 #import "NSAttributedString+JBStackExchangeExtensions.h"
 
-CGFloat const kQuestionSummaryCellWidth = 300;
-CGFloat const kQuestionSummaryCellWidthIpad = 354;
+CGFloat const kQuestionSummaryCellWidth = 280;
+CGFloat const kQuestionSummaryCellWidthIpad = 350;
+
+// I just grabbed these values from the storyboard to get my UI looking better without
+// actually spending much time on it.
+CGFloat const kQuestionSummaryVotesAndAnswersHeight = 68;
+CGFloat const kQuestionSummaryVerticalPaddingTotal = 40;
 
 @interface JBStackExchangeQuestionSummaryCollectionViewCell ()
 
@@ -49,12 +54,30 @@ CGFloat const kQuestionSummaryCellWidthIpad = 354;
 + (CGSize)cellSizeWithQuestion:(JBStackExchangeQuestionItem *)question
                         isIpad:(BOOL)isIpad
 {
+    CGSize cellSize = CGSizeZero;
+    
+    NSAttributedString *questionTitle = [NSAttributedString attributedStringFromHTML: question.questionTitleHTML];
+    
     if (isIpad)
     {
-        return CGSizeMake(kQuestionSummaryCellWidthIpad, 200);
+        CGSize questionTitleConstraintSizeIpad = CGSizeMake(kQuestionSummaryCellWidthIpad, 0.0);
+        CGFloat questionTitleHeightIpad = [questionTitle boundingRectWithSize: questionTitleConstraintSizeIpad
+                                                                      options: NSStringDrawingUsesLineFragmentOrigin
+                                                                      context: NULL].size.height;
+        
+        cellSize = CGSizeMake(kQuestionSummaryCellWidthIpad, questionTitleHeightIpad + kQuestionSummaryVotesAndAnswersHeight + kQuestionSummaryVerticalPaddingTotal);
+    }
+    else
+    {
+        CGSize questionTitleConstraintSize = CGSizeMake(kQuestionSummaryCellWidth, 0.0);
+        CGFloat questionTitleHeight = [questionTitle boundingRectWithSize: questionTitleConstraintSize
+                                                                  options: NSStringDrawingUsesLineFragmentOrigin
+                                                                  context: NULL].size.height;
+        
+        cellSize = CGSizeMake(kQuestionSummaryCellWidth, questionTitleHeight + kQuestionSummaryVotesAndAnswersHeight + kQuestionSummaryVerticalPaddingTotal);
     }
     
-    return CGSizeMake(kQuestionSummaryCellWidth, 130);
+    return cellSize;
 }
 
 @end
