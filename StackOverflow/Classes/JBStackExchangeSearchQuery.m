@@ -10,6 +10,7 @@
 
 NSString * const kStackExchangeRequestOptionInTitleQueryKey = @"intitle";
 NSString * const kStackExchangeRequestOptionFilterKey = @"filter";
+NSString * const kStackExchangeRequestOptionSortKey = @"sort";
 NSString * const kStackExchangeRequestOptionPageKey = @"page";
 
 @implementation JBStackExchangeSearchQuery
@@ -35,6 +36,11 @@ NSString * const kStackExchangeRequestOptionPageKey = @"page";
     if (self.stackExchangeSite && self.stackExchangeSite.siteAPIParameter)
     {
         queryParameters[kStackExchangeRequestOptionSiteKey] = self.stackExchangeSite.siteAPIParameter;
+    }
+    
+    if (self.sortKey)
+    {
+        queryParameters[kStackExchangeRequestOptionSortKey];
     }
     
     return queryParameters;

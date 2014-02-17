@@ -45,6 +45,12 @@ NSString * const kJBStackExchangePresentFiltersModalSegueIdentifier = @"kJBStack
         _searchQuery = [[JBStackExchangeSearchQuery alloc] init];
         _searchQuery.pageNumber = 1;
         
+        // This would be easy to move in to the filters view controller.
+        // This is only here because I ran out of time before being able to
+        // implement a more full-featured filter view.
+        
+        _searchQuery.sortKey = @"creation";
+        
         _canLoadMoreItems = NO;
     }
     
