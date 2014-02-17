@@ -12,6 +12,7 @@ NSString * const kStackExchangeResponseItemTitleKey = @"title";
 NSString * const kStackExchangeResponseItemOwnerKey = @"owner";
 NSString * const kStackExchangeResponseItemBodyKey = @"body";
 NSString * const kStackExchangeResponseItemAnswersKey = @"answers";
+NSString * const kStackExchangeResponseItemCreationDateKey = @"creation_date";
 
 @interface JBStackExchangeResponseItem ()
 

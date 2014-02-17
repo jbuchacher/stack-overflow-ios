@@ -23,6 +23,7 @@ CGFloat const kQuestionSummaryVerticalPaddingTotal = 40;
 @property (nonatomic, weak) IBOutlet UILabel *questionTitleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *questionVotesLabel;
 @property (nonatomic, weak) IBOutlet UILabel *questionAnswersLabel;
+@property (nonatomic, weak) IBOutlet UILabel *questionCreationDateLabel;
 
 @end
 
@@ -42,12 +43,25 @@ CGFloat const kQuestionSummaryVerticalPaddingTotal = 40;
         self.questionTitleLabel.attributedText = [NSAttributedString attributedStringFromHTML: question.questionTitleHTML];
         self.questionVotesLabel.text = [NSString stringWithFormat: @"%ld", (long)question.questionVotes];
         self.questionAnswersLabel.text = [NSString stringWithFormat: @"%ld", (long)question.questionAnswers.count];
+        
+        
+        
+        // My preferred practice is keeping specific date formatters around in memory, they are expensive
+        // to create. I never added dates to the UI, so I dropped this in really quick. This is not what
+        // I would ship in production :)
+        NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
+        dateFormatter.locale = [NSLocale currentLocale];
+        dateFormatter.dateStyle = NSDateFormatterShortStyle;
+        dateFormatter.timeStyle = NSDateFormatterShortStyle;
+        
+        self.questionCreationDateLabel.text = [dateFormatter stringFromDate: question.questionCreationDate];
     }
     else
     {
         self.questionTitleLabel.text = @"";
         self.questionVotesLabel.text = @"";
         self.questionAnswersLabel.text = @"";
+        self.questionCreationDateLabel.text = @"";
     }
 }
 

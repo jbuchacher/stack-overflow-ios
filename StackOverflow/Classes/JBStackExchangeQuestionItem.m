@@ -17,6 +17,7 @@ NSString * const kStackExchangeQuestionIsAnsweredKey = @"is_answered";
 @property (nonatomic, strong) JBStackExchangeItemOwner *questionOwner;
 @property (nonatomic, strong) NSString *questionTitleHTML;
 @property (nonatomic, strong) NSString *questionBodyHTML;
+@property (nonatomic, strong) NSDate *questionCreationDate;
 @property (nonatomic, strong) NSArray *questionAnswers;
 @property (nonatomic, assign) NSInteger questionVotes;
 @property (nonatomic, assign) BOOL isAnswered;
@@ -89,6 +90,8 @@ NSString * const kStackExchangeQuestionIsAnsweredKey = @"is_answered";
         _questionAnswers = answers;
         
         _questionVotes = [dictionary[kStackExchangeQuestionScoreKey] integerValue];
+        
+        _questionCreationDate = [NSDate dateWithTimeIntervalSince1970: [dictionary[kStackExchangeResponseItemCreationDateKey] longValue]];
         
         _isAnswered = [dictionary[kStackExchangeQuestionIsAnsweredKey] boolValue];
     }

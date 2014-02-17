@@ -12,6 +12,7 @@ extern NSString * const kStackExchangeResponseItemTitleKey;
 extern NSString * const kStackExchangeResponseItemOwnerKey;
 extern NSString * const kStackExchangeResponseItemBodyKey;
 extern NSString * const kStackExchangeResponseItemAnswersKey;
+extern NSString * const kStackExchangeResponseItemCreationDateKey;
 
 @interface JBStackExchangeResponseItem : JBStackExchangeModel
 
