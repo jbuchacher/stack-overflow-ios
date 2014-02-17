@@ -13,6 +13,14 @@
 NSString * const kStackExchangeAnswerAcceptedImageName = @"checkmark-selected";
 NSString * const kStackExchangeAnswerUnacceptedImageName = @"checkmark-unselected";
 
+CGFloat const kAnswerSummaryCellWidth = 260;
+CGFloat const kAnswerSummaryCellWidthIpad = 688;
+
+// I just grabbed these values from the storyboard to get my UI looking better without
+// actually spending much time on it.
+CGFloat const kAnswerSummaryCellOwnerInfoHeight = 86;
+CGFloat const kAnswerSummaryCellVerticalPaddingTotal = 40;
+
 @interface JBStackExchangeAnswerSummaryCollectionViewCell ()
 
 @property (nonatomic, weak) IBOutlet UILabel *answerBodyLabel;
@@ -52,12 +60,30 @@ NSString * const kStackExchangeAnswerUnacceptedImageName = @"checkmark-unselecte
 + (CGSize)cellSizeWithAnswer:(JBStackExchangeAnswerItem *)answer
                       isIpad:(BOOL)isIpad
 {
+    CGSize cellSize = CGSizeZero;
+    
+    NSAttributedString *answerBody = [NSAttributedString attributedStringFromHTML: answer.answerBodyHTML];
+    
     if (isIpad)
     {
-        return CGSizeMake(600, 200);
+        CGSize answerBodyConstraintSizeIpad = CGSizeMake(kAnswerSummaryCellWidthIpad, 0.0);
+        CGFloat answerBodyHeightIpad = [answerBody boundingRectWithSize: answerBodyConstraintSizeIpad
+                                                             options: NSStringDrawingUsesLineFragmentOrigin
+                                                             context: NULL].size.height;
+        
+        cellSize = CGSizeMake(kAnswerSummaryCellWidthIpad, answerBodyHeightIpad + kAnswerSummaryCellOwnerInfoHeight);
+    }
+    else
+    {
+        CGSize answerBodyConstraintSize = CGSizeMake(kAnswerSummaryCellWidth, 0.0);
+        CGFloat answerBodyHeight = [answerBody boundingRectWithSize: answerBodyConstraintSize
+                                                            options: NSStringDrawingUsesLineFragmentOrigin
+                                                            context: NULL].size.height;
+        
+        cellSize = CGSizeMake(kAnswerSummaryCellWidth, answerBodyHeight + kAnswerSummaryCellOwnerInfoHeight);
     }
     
-    return CGSizeMake(280, 400);
+    return cellSize;
 }
 
 @end
