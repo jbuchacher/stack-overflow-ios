@@ -29,6 +29,8 @@ NSString * const kJBStackExchangePresentFiltersModalSegueIdentifier = @"kJBStack
 
 @property (nonatomic, strong) JBStackExchangeSearchQuery *searchQuery;
 
+@property (nonatomic, assign) BOOL canLoadMoreItems;
+
 @property (nonatomic, strong) NSArray *stackExchangeQuestions;
 
 @end
@@ -41,6 +43,8 @@ NSString * const kJBStackExchangePresentFiltersModalSegueIdentifier = @"kJBStack
     {
         _searchQuery = [[JBStackExchangeSearchQuery alloc] init];
         _searchQuery.pageNumber = 1;
+        
+        _canLoadMoreItems = NO;
     }
     
     return self;
@@ -56,8 +60,9 @@ NSString * const kJBStackExchangePresentFiltersModalSegueIdentifier = @"kJBStack
     [[JBStackExchangeAPIManager shared] fetchStackExchangeQuestionsWithQuery: query
                                                                      success:^(JBStackExchangeResponse *responseObject)
      {
-         self.stackExchangeQuestions = responseObject.items;
-         [self.collectionView reloadData];
+         self.canLoadMoreItems = responseObject.hasMoreItems;
+
+         [self fetchedQuestions: responseObject.items];
      }
                                                                      failure:^(NSError *error)
      {
@@ -78,6 +83,28 @@ NSString * const kJBStackExchangePresentFiltersModalSegueIdentifier = @"kJBStack
          
          NSLog(@"Failed to fetch questions: %@", error);
      }];
+}
+
+- (void)fetchedQuestions:(NSArray *)questions
+{
+    if (self.searchQuery.pageNumber > 1)
+    {
+        NSArray *mergedQuestions = [self.stackExchangeQuestions arrayByAddingObjectsFromArray: questions];
+        NSMutableArray *indexPaths = [NSMutableArray arrayWithCapacity: questions.count];
+        for (JBStackExchangeQuestionItem *question in questions)
+        {
+            [indexPaths addObject: [NSIndexPath indexPathForItem: [mergedQuestions indexOfObject: question]
+                                                      inSection: 0]];
+        }
+        
+        self.stackExchangeQuestions = mergedQuestions;
+        [self.collectionView insertItemsAtIndexPaths: indexPaths];
+    }
+    else
+    {
+        self.stackExchangeQuestions = questions;
+        [self.collectionView reloadData];
+    }
 }
 
 #pragma mark - UICollectionView
@@ -105,7 +132,7 @@ NSString * const kJBStackExchangePresentFiltersModalSegueIdentifier = @"kJBStack
             break;
         case JBStackExchangeQuestionSummaryLoadMoreQuestionsSection:
         {
-            return 1;
+            return self.canLoadMoreItems ? 1 : 0;
         }
             break;
     }
