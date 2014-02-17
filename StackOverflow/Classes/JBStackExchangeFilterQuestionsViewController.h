@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class JBStackExchangeFilterOptions;
+
 @interface JBStackExchangeFilterQuestionsViewController : UIViewController
+
+@property (nonatomic, weak) UIPopoverController *parentPopoverController;
+
+@property (copy) void (^filtersUpdated)(JBStackExchangeFilterOptions *filters);
 
 @end

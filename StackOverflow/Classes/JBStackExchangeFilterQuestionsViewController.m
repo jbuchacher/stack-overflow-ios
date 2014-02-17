@@ -13,6 +13,7 @@ NSString * const kStackExchangeFilterItemCollectionViewReuseIdentifier = @"kStac
 
 @interface JBStackExchangeFilterQuestionsViewController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, strong) JBStackExchangeFilterOptions *filters;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 
 @end
@@ -37,6 +38,29 @@ NSString * const kStackExchangeFilterItemCollectionViewReuseIdentifier = @"kStac
                                                                                         forIndexPath: indexPath];
     
     return cell;
+}
+
+- (IBAction)saveFilters
+{
+    if (self.filtersUpdated)
+    {
+        self.filtersUpdated(self.filters);
+    }
+    
+    [self dismiss];
+}
+
+- (IBAction)dismiss
+{
+    if (self.parentPopoverController)
+    {
+        [self.parentPopoverController dismissPopoverAnimated: YES];
+    }
+    else
+    {
+        [self.presentingViewController dismissViewControllerAnimated: YES
+                                                          completion: nil];
+    }
 }
 
 @end

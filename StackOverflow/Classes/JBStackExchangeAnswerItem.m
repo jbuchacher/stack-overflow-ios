@@ -8,10 +8,13 @@
 
 #import "JBStackExchangeAnswerItem.h"
 
+NSString * const kStackExchangeQuestionIsAcceptedKey = @"is_accepted";
+
 @interface JBStackExchangeAnswerItem ()
 
 @property (nonatomic, strong) JBStackExchangeItemOwner *answerOwner;
 @property (nonatomic, strong) NSString *answerBodyHTML;
+@property (nonatomic, assign) BOOL isAcceptedAnswer;
 
 @end
 
@@ -23,6 +26,7 @@
     {
         _answerBodyHTML = dictionary[kStackExchangeResponseItemBodyKey];
         _answerOwner = [[JBStackExchangeItemOwner alloc] initWithDictionary: dictionary[kStackExchangeResponseItemOwnerKey]];
+        _isAcceptedAnswer = [dictionary[kStackExchangeQuestionIsAcceptedKey] boolValue];
     }
     
     return self;

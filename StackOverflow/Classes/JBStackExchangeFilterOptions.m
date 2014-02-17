@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Josh Buchacher. All rights reserved.
 //
 
-#import "JBStackExchangeFilterOption.h"
+#import "JBStackExchangeFilterOptions.h"
 
-@implementation JBStackExchangeFilterOption
+@implementation JBStackExchangeFilterOptions
 
 @end

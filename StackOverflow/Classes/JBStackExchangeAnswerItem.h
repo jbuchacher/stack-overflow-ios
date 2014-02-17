@@ -13,5 +13,6 @@
 
 @property (nonatomic, strong, readonly) JBStackExchangeItemOwner *answerOwner;
 @property (nonatomic, strong, readonly) NSString *answerBodyHTML;
+@property (nonatomic, assign, readonly) BOOL isAcceptedAnswer;
 
 @end

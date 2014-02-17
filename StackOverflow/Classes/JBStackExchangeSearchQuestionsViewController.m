@@ -11,6 +11,7 @@
 #import "JBStackExchangeQuestionSummaryCollectionViewCell.h"
 #import "JBStackExchangeLoadMoreCellsCollectionViewCell.h"
 #import "JBStackExchangeLoginViewController.h"
+#import "JBStackExchangeFilterQuestionsViewController.h"
 #import "JBStackExchangeQuestionItem.h"
 
 enum
@@ -258,7 +259,11 @@ NSString * const kJBStackExchangePresentFiltersModalSegueIdentifier = @"kJBStack
     }
     else if ([segue.identifier isEqualToString: kJBStackExchangePresentFiltersModalSegueIdentifier])
     {
-        
+        if ([segue isKindOfClass: [UIStoryboardPopoverSegue class]])
+        {
+            JBStackExchangeFilterQuestionsViewController *destination = [segue destinationViewController];
+            destination.parentPopoverController = [(UIStoryboardPopoverSegue *)segue popoverController];
+        }
     }
 }
 

@@ -71,10 +71,21 @@ NSString * const kStackExchangeQuestionIsAnsweredKey = @"is_answered";
         
         NSDictionary *answersJSON = dictionary[kStackExchangeResponseItemAnswersKey];
         NSMutableArray *answers = [NSMutableArray arrayWithCapacity: answersJSON.count];
+        JBStackExchangeAnswerItem *acceptedAnswer = nil;
         for (NSDictionary *answerJSON in answersJSON)
         {
             JBStackExchangeAnswerItem *answer = [[JBStackExchangeAnswerItem alloc] initWithDictionary: answerJSON];
             [answers addObject: answer];
+            
+            if (answer.isAcceptedAnswer) acceptedAnswer = answer;
+        }
+        
+        // Quick bump of accepted answer to top of list (this could obviously be more robust.)
+        if (acceptedAnswer)
+        {
+            [answers removeObject: acceptedAnswer];
+            [answers insertObject: acceptedAnswer
+                          atIndex: 0];
         }
         
         _questionAnswers = answers;

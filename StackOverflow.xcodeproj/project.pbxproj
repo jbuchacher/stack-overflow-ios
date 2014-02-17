@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		960DEC3518B0890D0017729C /* JBStackExchangeFilterQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 960DEC3418B0890D0017729C /* JBStackExchangeFilterQuestionsViewController.m */; };
 		960DEC3618B0890D0017729C /* JBStackExchangeFilterQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 960DEC3418B0890D0017729C /* JBStackExchangeFilterQuestionsViewController.m */; };
-		960DEC3B18B08CF20017729C /* JBStackExchangeFilterOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 960DEC3A18B08CF20017729C /* JBStackExchangeFilterOption.m */; };
-		960DEC3C18B08CF20017729C /* JBStackExchangeFilterOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 960DEC3A18B08CF20017729C /* JBStackExchangeFilterOption.m */; };
+		960DEC3B18B08CF20017729C /* JBStackExchangeFilterOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 960DEC3A18B08CF20017729C /* JBStackExchangeFilterOptions.m */; };
+		960DEC3C18B08CF20017729C /* JBStackExchangeFilterOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 960DEC3A18B08CF20017729C /* JBStackExchangeFilterOptions.m */; };
 		960DEC3F18B08D0A0017729C /* JBStackExchangeFilterItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 960DEC3E18B08D0A0017729C /* JBStackExchangeFilterItemTableViewCell.m */; };
 		960DEC4018B08D0A0017729C /* JBStackExchangeFilterItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 960DEC3E18B08D0A0017729C /* JBStackExchangeFilterItemTableViewCell.m */; };
 		960DEC4418B09DE10017729C /* JBStackExchangeLoadMoreCellsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 960DEC4318B09DE10017729C /* JBStackExchangeLoadMoreCellsCollectionViewCell.m */; };
@@ -88,8 +88,8 @@
 /* Begin PBXFileReference section */
 		960DEC3318B0890D0017729C /* JBStackExchangeFilterQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBStackExchangeFilterQuestionsViewController.h; path = Classes/JBStackExchangeFilterQuestionsViewController.h; sourceTree = "<group>"; };
 		960DEC3418B0890D0017729C /* JBStackExchangeFilterQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBStackExchangeFilterQuestionsViewController.m; path = Classes/JBStackExchangeFilterQuestionsViewController.m; sourceTree = "<group>"; };
-		960DEC3918B08CF20017729C /* JBStackExchangeFilterOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBStackExchangeFilterOption.h; path = Classes/JBStackExchangeFilterOption.h; sourceTree = "<group>"; };
-		960DEC3A18B08CF20017729C /* JBStackExchangeFilterOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBStackExchangeFilterOption.m; path = Classes/JBStackExchangeFilterOption.m; sourceTree = "<group>"; };
+		960DEC3918B08CF20017729C /* JBStackExchangeFilterOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBStackExchangeFilterOptions.h; path = Classes/JBStackExchangeFilterOptions.h; sourceTree = "<group>"; };
+		960DEC3A18B08CF20017729C /* JBStackExchangeFilterOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBStackExchangeFilterOptions.m; path = Classes/JBStackExchangeFilterOptions.m; sourceTree = "<group>"; };
 		960DEC3D18B08D0A0017729C /* JBStackExchangeFilterItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBStackExchangeFilterItemTableViewCell.h; path = Classes/JBStackExchangeFilterItemTableViewCell.h; sourceTree = "<group>"; };
 		960DEC3E18B08D0A0017729C /* JBStackExchangeFilterItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBStackExchangeFilterItemTableViewCell.m; path = Classes/JBStackExchangeFilterItemTableViewCell.m; sourceTree = "<group>"; };
 		960DEC4218B09DE10017729C /* JBStackExchangeLoadMoreCellsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBStackExchangeLoadMoreCellsCollectionViewCell.h; path = Classes/JBStackExchangeLoadMoreCellsCollectionViewCell.h; sourceTree = "<group>"; };
@@ -271,8 +271,8 @@
 			children = (
 				969CDAF918B0823500F74FE2 /* JBStackExchangeBadgeCount.h */,
 				969CDAFA18B0823500F74FE2 /* JBStackExchangeBadgeCount.m */,
-				960DEC3918B08CF20017729C /* JBStackExchangeFilterOption.h */,
-				960DEC3A18B08CF20017729C /* JBStackExchangeFilterOption.m */,
+				960DEC3918B08CF20017729C /* JBStackExchangeFilterOptions.h */,
+				960DEC3A18B08CF20017729C /* JBStackExchangeFilterOptions.m */,
 				961E6EA618B0303F00D6A9A5 /* JBStackExchangeItemOwner.h */,
 				961E6EA718B0303F00D6A9A5 /* JBStackExchangeItemOwner.m */,
 				969CDAFD18B0824B00F74FE2 /* JBStackExchangeModel.h */,
@@ -545,7 +545,7 @@
 				9670C65418ADD57E003959E7 /* JBStackExchangeResponseItem.m in Sources */,
 				9670C67D18AEEE98003959E7 /* JBStackExchangeQuestionDetailViewController.m in Sources */,
 				96D7BC1618AC8FA20085D5E0 /* JBStackExchangeSearchQuestionsViewController.m in Sources */,
-				960DEC3B18B08CF20017729C /* JBStackExchangeFilterOption.m in Sources */,
+				960DEC3B18B08CF20017729C /* JBStackExchangeFilterOptions.m in Sources */,
 				960DEC4418B09DE10017729C /* JBStackExchangeLoadMoreCellsCollectionViewCell.m in Sources */,
 				9670C66218AE8CC5003959E7 /* JBStackExchangeSitesCollectionViewCell.m in Sources */,
 				960DEC3F18B08D0A0017729C /* JBStackExchangeFilterItemTableViewCell.m in Sources */,
@@ -588,7 +588,7 @@
 				9670C65118ADC610003959E7 /* JBStackExchangeAPIOptions.m in Sources */,
 				96D7BC2918AC917C0085D5E0 /* JBStackExchangeQuestionItem.m in Sources */,
 				96BD456518AFF9A8008B1F60 /* JBStackExchangeLoginViewController.m in Sources */,
-				960DEC3C18B08CF20017729C /* JBStackExchangeFilterOption.m in Sources */,
+				960DEC3C18B08CF20017729C /* JBStackExchangeFilterOptions.m in Sources */,
 				9670C67E18AEEE98003959E7 /* JBStackExchangeQuestionDetailViewController.m in Sources */,
 				961E6EA918B0303F00D6A9A5 /* JBStackExchangeItemOwner.m in Sources */,
 				96BD456918B0074B008B1F60 /* JBStackExchangeQuery.m in Sources */,

@@ -8,6 +8,6 @@
 
 #import "JBStackExchangeModel.h"
 
-@interface JBStackExchangeFilterOption : JBStackExchangeModel
+@interface JBStackExchangeFilterOptions : JBStackExchangeModel
 
 @end

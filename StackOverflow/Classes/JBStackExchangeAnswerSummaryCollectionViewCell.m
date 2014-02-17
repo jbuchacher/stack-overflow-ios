@@ -10,6 +10,9 @@
 #import "JBStackExchangeAnswerItem.h"
 #import "NSAttributedString+JBStackExchangeExtensions.h"
 
+NSString * const kStackExchangeAnswerAcceptedImageName = @"checkmark-selected";
+NSString * const kStackExchangeAnswerUnacceptedImageName = @"checkmark-unselected";
+
 @interface JBStackExchangeAnswerSummaryCollectionViewCell ()
 
 @property (nonatomic, weak) IBOutlet UILabel *answerBodyLabel;
@@ -34,11 +37,15 @@
     {
         self.answerBodyLabel.attributedText = [NSAttributedString attributedStringFromHTML: answer.answerBodyHTML];
         self.answerOwnerNameLabel.text = answer.answerOwner.ownerName;
+        
+        NSString *acceptedImageName = answer.isAcceptedAnswer ? kStackExchangeAnswerAcceptedImageName : kStackExchangeAnswerUnacceptedImageName;
+        self.answerAcceptedImageView.image = [UIImage imageNamed: acceptedImageName];
     }
     else
     {
         self.answerBodyLabel.text = @"";
         self.answerOwnerNameLabel.text = @"";
+        self.answerAcceptedImageView.image = nil;
     }
 }
 
