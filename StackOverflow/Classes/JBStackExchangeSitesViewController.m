@@ -100,9 +100,8 @@ NSString * const kJBStackExchangePushToQuestionsSegueIdentifier = @"kJBStackExch
     if ([segue.identifier isEqualToString: kJBStackExchangePushToQuestionsSegueIdentifier])
     {
         NSIndexPath *indexPathOfSelectedCell = [self.collectionView indexPathForCell: sender];
-        JBStackExchangeSiteItem *item = self.stackExchangeSites[indexPathOfSelectedCell.row];
-        
-        [[JBStackExchangeAPIManager shared] apiOptions].siteParameter = item.siteAPIParameter;
+        JBStackExchangeSearchQuestionsViewController *destination = [segue destinationViewController];
+        destination.searchQuery.stackExchangeSite = self.stackExchangeSites[indexPathOfSelectedCell.row];
     }
 }
 

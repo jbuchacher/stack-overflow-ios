@@ -10,6 +10,7 @@
 #import "JBStackExchangeQuestionDetailViewController.h"
 #import "JBStackExchangeQuestionSummaryCollectionViewCell.h"
 #import "JBStackExchangeLoadMoreCellsCollectionViewCell.h"
+#import "JBStackExchangeQuestionSummaryHeader.h"
 #import "JBStackExchangeLoginViewController.h"
 #import "JBStackExchangeFilterQuestionsViewController.h"
 #import "JBStackExchangeQuestionItem.h"
@@ -28,10 +29,9 @@ NSString * const kJBStackExchangePresentFiltersModalSegueIdentifier = @"kJBStack
 
 @interface JBStackExchangeSearchQuestionsViewController () <UISearchBarDelegate, UICollectionViewDelegateFlowLayout>
 
+@property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) JBStackExchangeSearchQuery *searchQuery;
-
 @property (nonatomic, assign) BOOL canLoadMoreItems;
-
 @property (nonatomic, strong) NSArray *stackExchangeQuestions;
 
 @end
@@ -88,6 +88,8 @@ NSString * const kJBStackExchangePresentFiltersModalSegueIdentifier = @"kJBStack
 
 - (void)fetchedQuestions:(NSArray *)questions
 {
+    // If I were ever to merge another response, I would move this logic somewhere more appropriate
+    // for automagically merging sequential response items'. 
     if (self.searchQuery.pageNumber > 1)
     {
         NSArray *mergedQuestions = [self.stackExchangeQuestions arrayByAddingObjectsFromArray: questions];
@@ -212,9 +214,11 @@ NSString * const kJBStackExchangePresentFiltersModalSegueIdentifier = @"kJBStack
         {
             case JBStackExchangeQuestionSummaryQuestionSection:
             {
-                return [self.collectionView dequeueReusableSupplementaryViewOfKind: kind
-                                                               withReuseIdentifier: @"JBStackExchangeQuestionSummaryCollectionViewHeader"
-                                                                      forIndexPath: indexPath];
+                JBStackExchangeQuestionSummaryHeader *header = [self.collectionView dequeueReusableSupplementaryViewOfKind: kind
+                                                                                                       withReuseIdentifier: @"JBStackExchangeQuestionSummaryHeader"
+                                                                                                              forIndexPath: indexPath];
+                header.searchBar.placeholder = [NSString stringWithFormat: @"Search %@", self.searchQuery.stackExchangeSite.siteName];
+                return header;
             }
                 break;
         }

@@ -15,7 +15,6 @@ extern NSString * const kStackExchangeRequestOptionAccessKeyKey;
 
 @interface JBStackExchangeAPIOptions : NSObject
 
-@property (nonatomic, strong) NSString *siteParameter;
 @property (nonatomic, strong, readonly) NSString *apiKey;
 @property (nonatomic, strong) NSString *accessToken;
 

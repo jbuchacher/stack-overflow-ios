@@ -264,11 +264,6 @@ typedef JBStackExchangeResponseItem * (^JBStackExchangeResponseParseItemsBlock)(
         queryParameters[kStackExchangeRequestOptionAccessKeyKey] = self.apiOptions.apiKey;
     }
     
-    if (self.apiOptions.siteParameter)
-    {
-        queryParameters[kStackExchangeRequestOptionSiteKey] = self.apiOptions.siteParameter;
-    }
-    
     if (queryParameters.count)
     {
         NSMutableString *queryParameterString = [[NSMutableString alloc] initWithString: @"?"];

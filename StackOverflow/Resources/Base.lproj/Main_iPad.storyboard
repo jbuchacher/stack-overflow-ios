@@ -340,7 +340,7 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="JBStackExchangeQuestionSummaryCollectionViewHeader" id="pWO-Dn-Oac">
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="JBStackExchangeQuestionSummaryHeader" id="pWO-Dn-Oac" customClass="JBStackExchangeQuestionSummaryHeader">
                             <rect key="frame" x="0.0" y="64" width="768" height="44"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
@@ -359,6 +359,9 @@
                                 <constraint firstItem="hDH-km-tcb" firstAttribute="leading" secondItem="pWO-Dn-Oac" secondAttribute="leading" id="a81-X2-OOy"/>
                                 <constraint firstItem="hDH-km-tcb" firstAttribute="top" secondItem="pWO-Dn-Oac" secondAttribute="top" id="pOy-K1-Lou"/>
                             </constraints>
+                            <connections>
+                                <outlet property="searchBar" destination="hDH-km-tcb" id="17m-Vl-TLd"/>
+                            </connections>
                         </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="amh-Kf-Gys" id="11i-ha-q7a"/>

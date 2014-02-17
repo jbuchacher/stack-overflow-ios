@@ -158,18 +158,4 @@ enum
     return CGSizeZero;
 }
 
--(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
-          viewForSupplementaryElementOfKind:(NSString *)kind
-                                atIndexPath:(NSIndexPath *)indexPath
-{
-//    if ([kind isEqual:UICollectionElementKindSectionHeader])
-//    {
-//        return [self.collectionView dequeueReusableSupplementaryViewOfKind: kind
-//                                                       withReuseIdentifier: @"JBStackExchangeQuestionSummaryCollectionViewHeader"
-//                                                              forIndexPath: indexPath];
-//    }
-    
-    return nil;
-}
-
 @end

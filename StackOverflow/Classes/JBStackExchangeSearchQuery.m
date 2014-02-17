@@ -32,6 +32,11 @@ NSString * const kStackExchangeRequestOptionPageKey = @"page";
         queryParameters[kStackExchangeRequestOptionPageKey] = [NSNumber numberWithInteger: self.pageNumber];
     }
     
+    if (self.stackExchangeSite && self.stackExchangeSite.siteAPIParameter)
+    {
+        queryParameters[kStackExchangeRequestOptionSiteKey] = self.stackExchangeSite.siteAPIParameter;
+    }
+    
     return queryParameters;
 }
 

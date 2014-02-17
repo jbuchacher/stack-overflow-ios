@@ -13,4 +13,6 @@ extern NSString * const kJBStackExchangeModalLoginViewControllerIdentifier;
 
 @interface JBStackExchangeSearchQuestionsViewController : UICollectionViewController
 
+@property (nonatomic, strong, readonly) JBStackExchangeSearchQuery *searchQuery;
+
 @end
