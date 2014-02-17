@@ -7,12 +7,11 @@
 //
 
 #import "JBStackExchangeAnswerItem.h"
-#import "NSAttributedString+JBStackExchangeExtensions.h"
 
 @interface JBStackExchangeAnswerItem ()
 
 @property (nonatomic, strong) JBStackExchangeItemOwner *answerOwner;
-@property (nonatomic, strong) NSAttributedString *answerBody;
+@property (nonatomic, strong) NSString *answerBodyHTML;
 
 @end
 
@@ -22,7 +21,7 @@
 {
     if (self = [super initWithDictionary: dictionary])
     {
-        _answerBody = [NSAttributedString attributedStringFromHTML: dictionary[kStackExchangeResponseItemBodyKey]];
+        _answerBodyHTML = dictionary[kStackExchangeResponseItemBodyKey];
         _answerOwner = [[JBStackExchangeItemOwner alloc] initWithDictionary: dictionary[kStackExchangeResponseItemOwnerKey]];
     }
     

@@ -8,7 +8,6 @@
 
 #import "JBStackExchangeQuestionItem.h"
 #import "JBStackExchangeAnswerItem.h"
-#import "NSAttributedString+JBStackExchangeExtensions.h"
 
 NSString * const kStackExchangeQuestionScoreKey = @"score";
 NSString * const kStackExchangeQuestionIsAnsweredKey = @"is_answered";
@@ -16,8 +15,8 @@ NSString * const kStackExchangeQuestionIsAnsweredKey = @"is_answered";
 @interface JBStackExchangeQuestionItem ()
 
 @property (nonatomic, strong) JBStackExchangeItemOwner *questionOwner;
-@property (nonatomic, strong) NSAttributedString *questionTitle;
-@property (nonatomic, strong) NSAttributedString *questionBody;
+@property (nonatomic, strong) NSString *questionTitleHTML;
+@property (nonatomic, strong) NSString *questionBodyHTML;
 @property (nonatomic, strong) NSArray *questionAnswers;
 @property (nonatomic, assign) NSInteger questionVotes;
 @property (nonatomic, assign) BOOL isAnswered;
@@ -67,8 +66,8 @@ NSString * const kStackExchangeQuestionIsAnsweredKey = @"is_answered";
         
         _questionOwner = [[JBStackExchangeItemOwner alloc] initWithDictionary: dictionary[kStackExchangeResponseItemOwnerKey]];
         
-        _questionTitle = [NSAttributedString attributedStringFromHTML: dictionary[kStackExchangeResponseItemTitleKey]];
-        _questionBody = [NSAttributedString attributedStringFromHTML: dictionary[kStackExchangeResponseItemBodyKey]];
+        _questionTitleHTML = dictionary[kStackExchangeResponseItemTitleKey];
+        _questionBodyHTML = dictionary[kStackExchangeResponseItemBodyKey];
         
         NSDictionary *answersJSON = dictionary[kStackExchangeResponseItemAnswersKey];
         NSMutableArray *answers = [NSMutableArray arrayWithCapacity: answersJSON.count];

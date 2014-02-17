@@ -8,6 +8,7 @@
 
 #import "JBStackExchangeAnswerSummaryCollectionViewCell.h"
 #import "JBStackExchangeAnswerItem.h"
+#import "NSAttributedString+JBStackExchangeExtensions.h"
 
 @interface JBStackExchangeAnswerSummaryCollectionViewCell ()
 
@@ -31,7 +32,7 @@
     
     if (answer)
     {
-        self.answerBodyLabel.attributedText = answer.answerBody;
+        self.answerBodyLabel.attributedText = [NSAttributedString attributedStringFromHTML: answer.answerBodyHTML];
         self.answerOwnerNameLabel.text = answer.answerOwner.ownerName;
     }
     else

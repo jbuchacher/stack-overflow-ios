@@ -8,6 +8,7 @@
 
 #import "JBStackExchangeQuestionDetailCollectionViewCell.h"
 #import "JBStackExchangeQuestionItem.h"
+#import "NSAttributedString+JBStackExchangeExtensions.h"
 
 @interface JBStackExchangeQuestionDetailCollectionViewCell ()
 
@@ -29,8 +30,8 @@
     
     if (question)
     {
-        self.questionTitleLabel.attributedText = question.questionTitle;
-        self.questionBodyLabel.attributedText = question.questionBody;
+        self.questionTitleLabel.attributedText = [NSAttributedString attributedStringFromHTML: question.questionTitleHTML];
+        self.questionBodyLabel.attributedText = [NSAttributedString attributedStringFromHTML: question.questionBodyHTML];
     }
     else
     {

@@ -12,6 +12,6 @@
 @interface JBStackExchangeAnswerItem : JBStackExchangeResponseItem
 
 @property (nonatomic, strong, readonly) JBStackExchangeItemOwner *answerOwner;
-@property (nonatomic, strong, readonly) NSAttributedString *answerBody;
+@property (nonatomic, strong, readonly) NSString *answerBodyHTML;
 
 @end

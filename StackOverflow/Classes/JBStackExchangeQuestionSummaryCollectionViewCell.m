@@ -8,6 +8,7 @@
 
 #import "JBStackExchangeQuestionSummaryCollectionViewCell.h"
 #import "JBStackExchangeQuestionItem.h"
+#import "NSAttributedString+JBStackExchangeExtensions.h"
 
 CGFloat const kQuestionSummaryCellWidth = 300;
 CGFloat const kQuestionSummaryCellWidthIpad = 354;
@@ -33,7 +34,7 @@ CGFloat const kQuestionSummaryCellWidthIpad = 354;
     
     if (question)
     {
-        self.questionTitleLabel.attributedText = question.questionTitle;
+        self.questionTitleLabel.attributedText = [NSAttributedString attributedStringFromHTML: question.questionTitleHTML];
         self.questionVotesLabel.text = [NSString stringWithFormat: @"%ld", (long)question.questionVotes];
         self.questionAnswersLabel.text = [NSString stringWithFormat: @"%ld", (long)question.questionAnswers.count];
     }
