@@ -99,15 +99,17 @@ NSString * const kJBStackExchangePresentFiltersModalSegueIdentifier = @"kJBStack
     if (self.searchQuery.pageNumber > 1)
     {
         NSArray *mergedQuestions = [self.stackExchangeQuestions arrayByAddingObjectsFromArray: questions];
-        NSMutableArray *indexPaths = [NSMutableArray arrayWithCapacity: questions.count];
-        for (JBStackExchangeQuestionItem *question in questions)
-        {
-            [indexPaths addObject: [NSIndexPath indexPathForItem: [mergedQuestions indexOfObject: question]
-                                                      inSection: 0]];
-        }
+//        NSMutableArray *indexPaths = [NSMutableArray arrayWithCapacity: questions.count];
+//        for (JBStackExchangeQuestionItem *question in questions)
+//        {
+//            [indexPaths addObject: [NSIndexPath indexPathForItem: [mergedQuestions indexOfObject: question]
+//                                                      inSection: 0]];
+//        }
         
         self.stackExchangeQuestions = mergedQuestions;
-        [self.collectionView insertItemsAtIndexPaths: indexPaths];
+//        [self.collectionView insertItemsAtIndexPaths: indexPaths];
+        
+        [self.collectionView reloadData];
     }
     else
     {
