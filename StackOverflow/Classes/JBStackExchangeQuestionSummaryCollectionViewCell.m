@@ -34,8 +34,8 @@ CGFloat const kQuestionSummaryCellWidthIpad = 354;
     if (question)
     {
         self.questionTitleLabel.attributedText = question.questionTitle;
-        self.questionVotesLabel.text = [NSString stringWithFormat: @"%d", question.questionVotes];
-        self.questionAnswersLabel.text = [NSString stringWithFormat: @"%d", question.questionAnswers.count];
+        self.questionVotesLabel.text = [NSString stringWithFormat: @"%ld", (long)question.questionVotes];
+        self.questionAnswersLabel.text = [NSString stringWithFormat: @"%ld", (long)question.questionAnswers.count];
     }
     else
     {

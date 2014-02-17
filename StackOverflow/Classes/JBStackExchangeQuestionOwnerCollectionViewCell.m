@@ -40,7 +40,7 @@
     if (itemOwner)
     {
         self.ownerNameLabel.text = itemOwner.ownerName;
-        self.ownerReputationLabel.text = [NSString stringWithFormat: @"%d", itemOwner.ownerReputation];
+        self.ownerReputationLabel.text = [NSString stringWithFormat: @"%ld", (long)itemOwner.ownerReputation];
     }
     else
     {
@@ -64,7 +64,7 @@
 
 - (void)updateBadgeLabel:(UILabel *)label andBadgeImageView:(UIImageView *)imageView withBadge:(NSInteger)badge
 {
-    label.text = badge ? [NSString stringWithFormat: @"%d", badge] : @"";
+    label.text = badge ? [NSString stringWithFormat: @"%ld", (long)badge] : @"";
     BOOL hideBadges = badge == 0;
     label.hidden = hideBadges;
     imageView.hidden = hideBadges;
