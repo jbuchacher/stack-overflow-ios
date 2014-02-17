@@ -75,7 +75,7 @@
 {
     if (isIpad)
     {
-        return CGSizeMake(700, 110);
+        return CGSizeMake(728, 110);
     }
     
     return CGSizeMake(300, 110);

@@ -10,13 +10,14 @@
 #import "JBStackExchangeQuestionItem.h"
 #import "NSAttributedString+JBStackExchangeExtensions.h"
 
-CGFloat const kQuestionDetailCellWidth = 260;
-CGFloat const kQuestionDetailCellWidthIpad = 688;
+CGFloat const kQuestionDetailCellWidth = 300;
+CGFloat const kQuestionDetailCellWidthIpad = 728;
 
 // I just grabbed these values from the storyboard to get my UI looking better without
 // actually spending much time on it.
 CGFloat const kQuestionDetailCellVerticalLabelPadding = 8;
 CGFloat const kQuestionDetailCellVerticalPaddingTotal = 40;
+CGFloat const kQuestionDetailCellHorizontalPaddingTotal = 40;
 
 @interface JBStackExchangeQuestionDetailCollectionViewCell ()
 
@@ -59,7 +60,7 @@ CGFloat const kQuestionDetailCellVerticalPaddingTotal = 40;
     if (isIpad)
     {
         CGFloat questionCellHeight = 0;
-        CGSize cellConstraintSizeIpad = CGSizeMake(kQuestionDetailCellWidthIpad, 0.0);
+        CGSize cellConstraintSizeIpad = CGSizeMake(kQuestionDetailCellWidthIpad - kQuestionDetailCellHorizontalPaddingTotal, 0.0);
         
         CGFloat questionBodyHeightIpad = [questionBody boundingRectWithSize: cellConstraintSizeIpad
                                                                     options: NSStringDrawingUsesLineFragmentOrigin
@@ -79,7 +80,7 @@ CGFloat const kQuestionDetailCellVerticalPaddingTotal = 40;
     else
     {
         CGFloat questionCellHeight = 0;
-        CGSize cellConstraintSize = CGSizeMake(kQuestionDetailCellWidth, 0.0);
+        CGSize cellConstraintSize = CGSizeMake(kQuestionDetailCellWidth - kQuestionDetailCellHorizontalPaddingTotal, 0.0);
         
         CGFloat questionBodyHeight = [questionBody boundingRectWithSize: cellConstraintSize
                                                                 options: NSStringDrawingUsesLineFragmentOrigin

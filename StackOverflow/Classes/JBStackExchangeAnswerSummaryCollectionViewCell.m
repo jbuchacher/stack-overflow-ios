@@ -13,13 +13,14 @@
 NSString * const kStackExchangeAnswerAcceptedImageName = @"checkmark-selected";
 NSString * const kStackExchangeAnswerUnacceptedImageName = @"checkmark-unselected";
 
-CGFloat const kAnswerSummaryCellWidth = 260;
-CGFloat const kAnswerSummaryCellWidthIpad = 688;
+CGFloat const kAnswerSummaryCellWidth = 300;
+CGFloat const kAnswerSummaryCellWidthIpad = 728;
 
 // I just grabbed these values from the storyboard to get my UI looking better without
 // actually spending much time on it.
 CGFloat const kAnswerSummaryCellOwnerInfoHeight = 86;
 CGFloat const kAnswerSummaryCellVerticalPaddingTotal = 40;
+CGFloat const kAnswerSummaryCellHorizontalPadding = 40;
 
 @interface JBStackExchangeAnswerSummaryCollectionViewCell ()
 
@@ -66,7 +67,7 @@ CGFloat const kAnswerSummaryCellVerticalPaddingTotal = 40;
     
     if (isIpad)
     {
-        CGSize answerBodyConstraintSizeIpad = CGSizeMake(kAnswerSummaryCellWidthIpad, 0.0);
+        CGSize answerBodyConstraintSizeIpad = CGSizeMake(kAnswerSummaryCellWidthIpad - kAnswerSummaryCellHorizontalPadding, 0.0);
         CGFloat answerBodyHeightIpad = [answerBody boundingRectWithSize: answerBodyConstraintSizeIpad
                                                              options: NSStringDrawingUsesLineFragmentOrigin
                                                              context: NULL].size.height;
@@ -75,7 +76,7 @@ CGFloat const kAnswerSummaryCellVerticalPaddingTotal = 40;
     }
     else
     {
-        CGSize answerBodyConstraintSize = CGSizeMake(kAnswerSummaryCellWidth, 0.0);
+        CGSize answerBodyConstraintSize = CGSizeMake(kAnswerSummaryCellWidth - kAnswerSummaryCellHorizontalPadding, 0.0);
         CGFloat answerBodyHeight = [answerBody boundingRectWithSize: answerBodyConstraintSize
                                                             options: NSStringDrawingUsesLineFragmentOrigin
                                                             context: NULL].size.height;
